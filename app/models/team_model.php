@@ -15,6 +15,13 @@ class team_model {
 		return $query->fetchAll(PDO::FETCH_ASSOC);
 	}
 
+	public function getTeamInfo($team_url){
+		$sql = "SELECT * FROM team WHERE team_url=:team_url";
+		$query = $this->db->prepare($sql);
+		$query->execute(array(':team_url' => $team_url));
+		return $query->fetch();
+	}
+
 	public function addTeam($name, $desc, $url){
 		$name = preg_replace("/\s+/", "", strip_tags($name));
 		$desc = preg_replace("/\s+/", "", strip_tags($desc));
