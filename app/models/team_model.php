@@ -9,19 +9,21 @@ class team_model {
 	}
  
 	public function getMyTeam(){
-		$sql = "SELECT idx, team_name, team_date, team_desc FROM team";
+		$sql = "SELECT * FROM team";
 		$query = $this->db->prepare($sql);
 		$query->execute();
 		return $query->fetchAll(PDO::FETCH_ASSOC);
 	}
 
-	public function addTeam($name, $desc){
+	public function addTeam($name, $desc, $url){
 		$name = preg_replace("/\s+/", "", strip_tags($name));
 		$desc = preg_replace("/\s+/", "", strip_tags($desc));
+		$date = date("Y-m-d h:i:s");
+		$url = preg_replace("/\s+/", "", strip_tags($url));
 
-		$sql = "INSERT INTO team (team_name, team_desc) VALUES (:team_name, :team_desc)";
+		$sql = "INSERT INTO team (team_name, team_desc, team_date, team_url) VALUES (:team_name, :team_desc, :team_date, :team_url)";
 		$query = $this->db->prepare($sql);
-		$query->execute(array(':team_name' => $name, ':team_desc' => $desc));
+		$query->execute(array(':team_name' => $name, ':team_desc' => $desc, ':team_date' => $date, ':team_url' => $url));
 	}
 }
 ?>

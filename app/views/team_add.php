@@ -8,6 +8,10 @@
 				<input type="text" id="name" name="name" placeholder="팀명">
 			</div>
 			<div>
+				<label for="url">팀아이디</label>
+				<input type="text" id="url" name="url" placeholder="팀아이디">
+			</div>
+			<div>
 				<label for="desc">팀소개</label>
 				<input type="text" id="desc" name="desc" placeholder="팀소개">
 			</div>

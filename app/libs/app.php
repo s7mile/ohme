@@ -13,13 +13,15 @@ class Application {
 		$params = explode('/', $url);
 		$counts = count($params);
 		$this->controller = "home";
+		$this->action = "index";
+
 		if(isset($params[0])){
 			if($params[0]) $this->controller = $params[0];
 		}
 		if(file_exists('./app/controllers/'.$this->controller.'.php')){
 			include './app/controllers/'.$this->controller.'.php';
 			$this->controller = new $this->controller();
-			$this->action = "index";
+
 			if(isset($params[1])){
 				if($params[1]) $this->action = $params[1];
 			}
@@ -42,12 +44,36 @@ class Application {
 					break;
 				}
 			}
+		}else{
+			include './app/controllers/team.php';
+			$this->controller = "team";
+			$this->controller = new $this->controller();
+
+			if(isset($params[1])){
+				if($params[1]) $this->action = $params[1];
+			}
+			if(method_exists($this->controller, $this->action)){
+				$cancontroll = true;
+				switch($counts){
+					case '0':
+					case '1':
+					case '2':
+						$this->controller->{$this->action}($params[0]);
+					break;
+					case '3':
+						$this->controller->{$this->action}($params[2]);
+					break;
+					case '4':
+						$this->controller->{$this->action}($params[2], $params[3]);
+					break;
+					case '5':
+						$this->controller->{$this->action}($params[2], $params[3], $params[4]);
+					break;
+				}
+			}
 		}
+
 		if($cancontroll == false){
-			echo 'controller -> '.$this->controller.'<br>';
-			echo 'action -> '.$this->action.'<br>';
-			echo 'counts -> '.$counts.'<br>';
-			echo 'url -> '.$url.'<br>';
 			echo "잘못된 접근데스네!";
 		}
 	}

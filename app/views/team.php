@@ -4,7 +4,7 @@
 <ul id="teamList">
 	<?php foreach($teamList as $team){ ?>
 	<li>
-		<a href="/">
+		<a href="/<?= $team['team_url']?>">
 			<div>
 				<strong><?= $team['team_name']?></strong>
 				<p class="desc"><?= $team['team_desc']?></p>

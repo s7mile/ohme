@@ -14,12 +14,17 @@
 <?php }?>
 	<header id="header1">
 		<div>
-			<h1><img src="/public/img/logo_white.png" alt="오늘의 메뉴"></h1>
+			<h1>
+				<a href="/user/team">
+					<img src="/public/img/logo_white.png" alt="오늘의 메뉴">
+				</a>
+			</h1>
 			<nav>
 				<ul>
-					<li><a href="/">홈</a></li>
-					<li><a href="/menu">메뉴판</a></li>
-					<li><a href="/rank">랭킹</a></li>
+					<li><a href="/<?=$team_url?>">홈</a></li>
+					<li><a href="/<?=$team_url?>/menu">메뉴판</a></li>
+					<li><a href="/<?=$team_url?>/rank">랭킹</a></li>
+					<li><a href="/<?=$team_url?>/setting">관리</a></li>
 				</ul>
 			</nav>
 			<?php if( !isset($_SESSION["loginId"]) ){ ?>

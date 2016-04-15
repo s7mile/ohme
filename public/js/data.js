@@ -22,7 +22,8 @@ var teamData = {
 	add: function(){
 		var form_data = {
 			name: $("#name").val(),
-			desc: $("#desc").val()
+			desc: $("#desc").val(),
+			url: $("#url").val()
 		};
 
 		$.ajax({
