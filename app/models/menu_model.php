@@ -8,10 +8,10 @@ class menu_model {
 		}
 	}
  
-	public function getMenu(){
-		$sql = "SELECT idx, menu_name, menu_tag FROM menu";
+	public function getMenu($teamIdx){
+		$sql = "SELECT idx, menu_name, menu_tag FROM menu where team_idx=:team_idx";
 		$query = $this->db->prepare($sql);
-		$query->execute();
+		$query->execute(array(':team_idx' => $teamIdx));
 		return $query->fetchAll(PDO::FETCH_ASSOC);
 	}
 

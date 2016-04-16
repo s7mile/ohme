@@ -22,6 +22,13 @@ class team_model {
 		return $query->fetch();
 	}
 
+	public function getTeamIdx($team_url){
+		$sql = "SELECT idx FROM team WHERE team_url=:team_url";
+		$query = $this->db->prepare($sql);
+		$query->execute(array(':team_url' => $team_url));
+		return $query->fetch()->idx;
+	}
+
 	public function addTeam($name, $desc, $url){
 		$name = preg_replace("/\s+/", "", strip_tags($name));
 		$desc = preg_replace("/\s+/", "", strip_tags($desc));

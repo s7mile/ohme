@@ -10,8 +10,11 @@ class team extends Controller {
 	}
 
 	public function menu($team_url){
+		$teamModel = $this->loadModel("team_model");
+		$teamIdx = $teamModel->getTeamIdx($team_url);
+
 		$menuModel = $this->loadModel("menu_model");
-		$menuList = $menuModel->getMenu();
+		$menuList = $menuModel->getMenu($teamIdx);
 		$chooseMenu = $menuModel->getChooseMenuIdx();
 
 		include 'app/views/header.php';
