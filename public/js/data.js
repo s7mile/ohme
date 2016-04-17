@@ -3,7 +3,7 @@ var menuData = {
 		var form_data = {
 			name: $("#name").val(),
 			tag: $("#sendTag").val(),
-			team_idx: 1
+			team: $("#team").val()
 		};
 
 		$.ajax({
@@ -41,7 +41,8 @@ var teamData = {
 var chooseData = {
 	choose: function(menuIdx){
 		var form_data = {
-			menuIdx: menuIdx
+			menuIdx: menuIdx,
+			team: $("#team").val()
 		};
 
 		$.ajax({
@@ -55,7 +56,8 @@ var chooseData = {
 	},
 	cancel: function(menuIdx){
 		var form_data = {
-			menuIdx: menuIdx
+			menuIdx: menuIdx,
+			team: $("#team").val()
 		};
 
 		$.ajax({

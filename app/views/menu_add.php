@@ -3,6 +3,7 @@
 	<div class="wrap">
 		<h2>맛 좋은 메뉴 추가</h2>
 		<div class="cont">
+			<input type="hidden" id="team" name="team" value="<?= $team_url?>">
 			<div>
 				<label for="name">식당이름</label>
 				<input type="text" id="name" name="name" placeholder="식당이름">

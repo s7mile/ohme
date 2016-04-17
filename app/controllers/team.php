@@ -30,7 +30,7 @@ class team extends Controller {
 		include 'app/views/footer.php';
 	}
 
-	public function add(){
+	public function add($team_url){
 		$teamModel = $this->loadModel("team_model");
 		$teamModel->addTeam($_POST['name'], $_POST['desc'], $_POST['url']);
 	}

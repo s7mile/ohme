@@ -69,7 +69,7 @@ class menu_model {
 		$query->execute(array(':menu_name' => $name, ':menu_tag' => $tag, ':team_idx' => $team));
 	}
 
-	public function chooseMenu($menus){
+	public function chooseMenu($menus, $team){
 		$menus = $menus.',';
 		//오늘날짜에 선택한 것들이 있는지
 		$sql = "SELECT count(*) FROM choose WHERE user_idx = :user_idx and date(final_date) = date(now())";
@@ -77,22 +77,22 @@ class menu_model {
 		$query->execute(array(':user_idx' => $_SESSION['loginIdx']));
 		if($query->fetchColumn() > 0){
 			//이미 오늘의 메뉴가 등록되어있는 경우
-			$sql = "UPDATE choose SET menus = CONCAT(menus, :menus), final_date = :final_date where user_idx = :user_idx and date(final_date) = date(now())";
+			$sql = "UPDATE choose SET menus = CONCAT(menus, :menus), final_date = :final_date where user_idx = :user_idx and date(final_date) = date(now()) and team_idx = :team_idx";
 			$query = $this->db->prepare($sql);
-			$query->execute(array(':menus' => $menus, ':final_date' => date("Y-m-d H:i:s", time()),  ':user_idx' => $_SESSION['loginIdx']));
+			$query->execute(array(':menus' => $menus, ':final_date' => date("Y-m-d H:i:s", time()),  ':user_idx' => $_SESSION['loginIdx'], ':team_idx' => $team));
 		}else{
 			//오늘 처음 메뉴 등록
 			$sql = "INSERT INTO choose (user_idx, menus, final_date, team_idx) VALUES (:user_idx, :menus, :final_date, :team_idx)";
 			$query = $this->db->prepare($sql);
-			$query->execute(array(':user_idx' => $_SESSION['loginIdx'], ':menus' => $menus, ':final_date' => date("Y-m-d H:i:s", time()),  ':team_idx' => 1));
+			$query->execute(array(':user_idx' => $_SESSION['loginIdx'], ':menus' => $menus, ':final_date' => date("Y-m-d H:i:s", time()),  ':team_idx' => $team));
 		}
 	}
 
-	public function cancelMenu($menus){
+	public function cancelMenu($menus, $team){
 		$menus = $menus.',';
-		$sql = "UPDATE choose SET menus = REPLACE(menus, :menus, ''), final_date = :final_date where user_idx = :user_idx and date(final_date) = date(now())";
+		$sql = "UPDATE choose SET menus = REPLACE(menus, :menus, ''), final_date = :final_date where user_idx = :user_idx and date(final_date) = date(now()) and team_idx = :team_idx";
 		$query = $this->db->prepare($sql);
-		$query->execute(array(':menus' => $menus, ':final_date' => date("Y-m-d H:i:s", time()),  ':user_idx' => $_SESSION['loginIdx']));
+		$query->execute(array(':menus' => $menus, ':final_date' => date("Y-m-d H:i:s", time()),  ':user_idx' => $_SESSION['loginIdx'], ':team_idx' => $team));
 	}
 }
 ?>
