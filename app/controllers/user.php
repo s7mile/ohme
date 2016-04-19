@@ -5,6 +5,9 @@ class User extends Controller {
 	public function team(){
 		$teamModel = $this->loadModel("team_model");
 		$teamList = $teamModel->getMyTeam();
+		
+		$li_1 = ' class="sel"';
+		$li_2 = '';
 
 		include 'app/views/header2.php';
 		include 'app/views/team.php';
@@ -14,6 +17,12 @@ class User extends Controller {
 	public function mypage(){
 		$teamModel = $this->loadModel("team_model");
 		$teamList = $teamModel->getMyTeam();
+
+		$userModel = $this->loadModel("user_model");
+		$userInfo = $userModel->getUser($_SESSION['loginId']);
+		
+		$li_1 = '';
+		$li_2 = ' class="sel"';
 
 		include 'app/views/header2.php';
 		include 'app/views/mypage.php';
