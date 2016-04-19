@@ -8,6 +8,8 @@ var spinArcStart = 10;
 var spinTime = 0;
 var spinTimeTotal = 0;
 
+var a=0;
+
 var ctx;
 
 function draw() {
@@ -89,16 +91,20 @@ function rotateWheel() {
 }
 
 function stopRotateWheel() {
-	clearTimeout(spinTimeout);
-	var degrees = startAngle * 180 / Math.PI + 90;
-	var arcd = arc * 180 / Math.PI;
-	var index = Math.floor((360 - degrees % 360) / arcd);
-	ctx.save();
-	// ctx.font = 'bold 30px sans-serif';
-	var text = menus[index];
-	// ctx.fillText(text,  - ctx.measureText(text).width / 2 + 150, 150 + 10);
-	// ctx.restore();
-	menuData.select(text);
+	if(a==0){
+		clearTimeout(spinTimeout);
+		var degrees = startAngle * 180 / Math.PI + 90;
+		var arcd = arc * 180 / Math.PI;
+		var index = Math.floor((360 - degrees % 360) / arcd);
+		ctx.save();
+		// ctx.font = 'bold 30px sans-serif';
+		var text = menus[index];
+		// ctx.fillText(text,  - ctx.measureText(text).width / 2 + 150, 150 + 10);
+		// ctx.restore();
+		menuData.select(text);
+	}
+
+	a+=1;
 }
 
 function easeOut(t, b, c, d) {
