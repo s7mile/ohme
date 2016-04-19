@@ -9,7 +9,7 @@ class menu_model {
 	}
  
 	public function getMenu($teamIdx){
-		$sql = "SELECT idx, menu_name, menu_tag FROM menu where team_idx=:team_idx";
+		$sql = "SELECT idx, menu_name, menu_tag, menu_img FROM menu where team_idx=:team_idx";
 		$query = $this->db->prepare($sql);
 		$query->execute(array(':team_idx' => $teamIdx));
 		return $query->fetchAll(PDO::FETCH_ASSOC);
@@ -80,7 +80,7 @@ class menu_model {
 			array_pop($chooseMenu);
 			$chooseMenus = implode(", ", $chooseMenu);
 
-			$sql = "SELECT menu_name, menu_tag FROM menu WHERE idx IN (".$chooseMenus.")";
+			$sql = "SELECT menu_name, menu_tag, menu_img FROM menu WHERE idx IN (".$chooseMenus.")";
 			$query = $this->db->prepare($sql);
 			$query->execute();
 			return $query->fetchAll(PDO::FETCH_ASSOC);

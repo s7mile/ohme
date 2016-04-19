@@ -11,7 +11,11 @@
 ?>
 		<li<?php echo $sel; ?>>
 			<a href="javascript:;" class="menu" data-menu="<?= $menu['idx'] ?>">
-				<span></span>
+				<span>
+					<?php if($menu['menu_img']){ ?>
+					<img src="/data/<?= $menu['menu_img']?>" alt="">
+					<?php } ?>
+				</span>
 				<ul>
 					<li><h3><?= $menu['menu_name'] ?></h3></li>
 					<li>

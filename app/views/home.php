@@ -44,7 +44,11 @@
 			foreach($roulMenu as $menu){
 		?>
 		<li>
-			<span></span>
+			<span>
+				<?php if($menu['menu_img']){ ?>
+				<img src="/data/<?= $menu['menu_img']?>" alt="">
+				<?php } ?>
+			</span>
 			<ul>
 				<li><h3><?= $menu['menu_name'] ?></h3></li>
 				<li>
