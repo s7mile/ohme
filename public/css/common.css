@@ -60,7 +60,6 @@ header#header1 h1 {
 	top: 8px;
 	width: 147px;
 	font-size: 17px;
-	text-align: center;
 }
 /*header#header1 h1 {
 	margin-top: 8px;
@@ -214,10 +213,10 @@ header#header2 .userInfo p {
 section {
 	width: 1180px;
 	min-height: 600px;
-	margin: 90px auto 0;
+	margin: 70px auto 0;
 }
 section.userSection {
-	margin-top: 0;
+	margin-top: 10px;
 }
 /*[S] tab*/
 .tab  {
@@ -266,8 +265,8 @@ section.userSection {
 /*[E] tab*/
 
 /*[S] botton*/
-.modal .btnArea input,
-.modal .btnArea input#submit,
+.btnArea input,
+.btnArea input#submit,
 .button {
 	display: inline-block;
 	opacity: .8;
@@ -277,11 +276,11 @@ section.userSection {
 	background: none;
 	color: #f42c2c;
 }
-.modal .btnArea input:hover, 
+.btnArea input:hover, 
 .button:hover {
 	opacity: 1;
 }
-.modal .btnArea input[type="button"],
+.btnArea input[type="button"],
 .button.gray {
 	border: 2px solid #999 !important;
 	color: #999;
@@ -319,6 +318,14 @@ section.userSection {
 	margin: 5px;
 	background: #fff;
 	border: 1px solid #ddd;
+}
+.menuList > li.empty {
+	border: 0;
+	width: 100%;
+	padding: 30px 0;
+	background: none;
+	text-align: center;
+	font-size: 20px;
 }
 .menuList#menuChoose > li {
 	float: left;
@@ -423,13 +430,14 @@ section.userSection {
 }
 #selectMenu {
 	position: relative;
+	padding-top: 40px;
 	z-index: 1;
 }
 #selectMenu h3 {
 	display: block;
 	width: 250px;
 	padding: 5px 0;
-	margin: 50px auto;
+	margin: 0 auto 50px;
 	text-align: center;
 	font-size: 40px;
 	background: #ffc71e;
@@ -440,25 +448,38 @@ section.userSection {
 	width: 700px;
 	height: 450px;
 	margin: 0 auto;
-	border: 3px solid #ddd;
+	border: 3px solid #444;
 	border-radius: 10px;
 	background: #fff;
 	text-align: center;
 	line-height: 450px;
 }
 #selectMenu img {
-	margin-top: -250px;
-	width: 200px;
+	position: absolute;
+	top: calc(50% - 400px);
+	left: calc(50% - 500px);
+	width: 1000px;
 }
 #selectMenu span {
 	position: absolute;
-	bottom: 10px;
+	bottom: 0;
 	left: 0;
 	display: block;
 	width: 100%;
+	padding: 10px 0;
 	line-height: normal;
+	font-size: 50px;
+	background: #444;
+	color: #fff;
 }
-#selectMenu a {
+#selectMenu a.reChoose {
+	position: absolute;
+	right: 250px;
+	top: 130px;
+	display: inline-block;
+	line-height: normal
+}
+#selectMenu a.chooseMenu {
 	display: block;
 	width: 700px;
 	height: 450px;
@@ -469,7 +490,7 @@ section.userSection {
 	text-align: center;
 	font-size: 20px;
 }
-#selectMenu a:hover {
+#selectMenu a.chooseMenu:hover {
 	border-color: #f42c2c;
 	font-weight: bold;
 	font-size: 30px;
@@ -494,7 +515,6 @@ section.userSection {
 	border-radius: 50%;
 	margin: 20px;
 }
-#teamMenu {display: none}
 
 /*[S] 룰렛*/
 #roulArea .wrap {
@@ -629,7 +649,7 @@ section.userSection {
 	height: 35px;
 	line-height: 35px;
 }
-.modal .btnArea {
+.btnArea {
 	padding: 10px 20px;
 	background: #eee;
 	text-align: right;
@@ -662,6 +682,7 @@ section.userSection {
 	border-left: 5px solid #ffc71e;
 	font-size: 15px;
 }
+#teamList li.invite {border-left-color: #399eeb;}
 #teamList li:nth-child(2n) {margin-left: 20px;}
 #teamList li > a > div {float: left;}
 #teamList strong {
@@ -733,16 +754,65 @@ section.userSection {
 	background: #aaa;
 }
 #teamSettingHead ul {text-align: left}
+
+#memberSetting {
+	margin-top: 420px;
+	border-radius: 10px
+}
+#memberSetting ul {
+	display: table;
+	width: 100%;
+	background: #fff;
+}
+#memberSetting ul.tableHead {
+	text-align: center;
+	font-weight: bold;
+	background: #ffc71e;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px 
+}
+#memberSetting li:last-child div {border: 0;}
+#memberSetting li {
+	display: table-row;
+}
+#memberSetting li > div {
+	display: table-cell;
+	padding: 10px;
+	border-bottom: 1px solid #eee;
+}
+#memberSetting .user {width: 30%;}
+#memberSetting .like {
+	width: 40%;
+	text-align: center;
+}
+#memberSetting .date {
+	width: 15%;
+	text-align: center;
+}
+#memberSetting .user span {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	margin-right: 5px;
+	background: #eee;
+	border-radius: 50%;
+	vertical-align: middle;
+}
+#memberSetting .invite {
+	margin-bottom: 5px;
+	text-align: right;
+}
 /*[E] teamSetting*/
 
 /*[S] footer*/
 footer {
+	margin-top: 50px;
 	border-top: 1px solid #e3e3e3;
 }
 footer p {
 	padding: 5px 0 10px;
 	border-top: 1px solid #fff;
 	text-align: center;
-	color: #936DBC;
+	color: #e14d39;
 }
 /*[E] footer*/

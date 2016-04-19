@@ -7,4 +7,19 @@
 		<input type="button" class="close" value="X">
 	</div>
 </div>
+<?php
+$menu = '';
+foreach($roulMenu as $roul){
+	if($menu == '')
+		$menu .= '"'.$roul['menu_name'].'"';
+	else
+		$menu .= ',"'.$roul['menu_name'].'"';
+}
+
+echo '<script>';
+echo 'var menus = [';
+echo $menu;
+echo '];';
+echo '</script>';
+?>
 <script	type="text/javascript" src="/public/js/roulette.js"></script>

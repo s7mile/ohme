@@ -10,9 +10,9 @@ class user_model {
 
 	//이메일 중복체크
 	public function emailCheck($uid){
-		$sql = "SELECT count(*) FROM user WHERE user_id='".$uid."'";
+		$sql = "SELECT count(*) FROM user WHERE user_id=':user_id'";
 		$query = $this->db->prepare($sql);
-		$query->execute();
+		$query->execute(array(':user_id' => $uid));
 		if($query->fetchColumn() > 0) return 0;
 
 		return 1;
@@ -20,10 +20,17 @@ class user_model {
 
 	//유저정보 가져오기
 	public function getUser($uid){
-		$sql = "SELECT * FROM user WHERE user_id='".$uid."'";
+		$sql = "SELECT * FROM user WHERE user_id=:user_id";
 		$query = $this->db->prepare($sql);
-		$query->execute();
+		$query->execute(array(':user_id' => $uid));
 		return $query->fetch();
+	}
+
+	public function getUserIdx($uid){
+		$sql = "SELECT idx FROM user WHERE user_id=:user_id";
+		$query = $this->db->prepare($sql);
+		$query->execute(array(':user_id' => $uid));
+		return $query->fetch()->idx;
 	}
 
 	//회원가입
@@ -39,7 +46,7 @@ class user_model {
 		$query = $this->db->prepare($sql);
 		$query->execute(array(':user_id' => $uid, ':user_pw' => $hashupw, ':user_name' => $uname));
 
-		movepage("/user/login");
+		movepage("/login");
 	}
 
 	//로그인
@@ -50,7 +57,7 @@ class user_model {
 			$_SESSION['loginId'] = $user->user_id;
 			$_SESSION['loginName'] = $user->user_name;
 			$_SESSION['loginIdx'] = $user->idx;
-			movepage('/');
+			movepage('/user/team');
 		} else {
 			alertmove('아이디 또는 비밀번호가 달라요');
 		}

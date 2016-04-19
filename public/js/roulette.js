@@ -1,8 +1,4 @@
 //arc = Math.PI/(식당수/2) 
-var menus = ["짜장면", "굴국밥", "쌈밥", "만두국",
-				"돈가스", "청국장", "추어탕", "알탕",
-				"수제비", "라면", "볶음밥", "부찌"];
-
 var total = menus.length; //갯수
 var startAngle = 0;
 var arc = Math.PI / (total/2);
@@ -102,7 +98,7 @@ function stopRotateWheel() {
 	var text = menus[index];
 	// ctx.fillText(text,  - ctx.measureText(text).width / 2 + 150, 150 + 10);
 	// ctx.restore();
-	alert(text);
+	menuData.select(text);
 }
 
 function easeOut(t, b, c, d) {

@@ -15,6 +15,22 @@ var menuData = {
 				else location.reload();
 			}
 		});
+	},
+	select: function(menu){
+		var form_data = {
+			menu: menu,
+			team: $("#team").val()
+		};
+
+		$.ajax({
+			type: "POST",
+			url: "/menu/select",
+			data: form_data,
+			success: function(data) {
+				if(data) alert(data);
+				else location.reload();
+			}
+		});
 	}
 }
 
@@ -29,6 +45,40 @@ var teamData = {
 		$.ajax({
 			type: "POST",
 			url: "/team/add",
+			data: form_data,
+			success: function(data) {
+				if(data) alert(data);
+				else location.reload();
+			}
+		});
+	}
+}
+
+var inviteData = {
+	add: function(){
+		var form_data = {
+			userid: $("#join_user").val(),
+			team : $("#team").val()
+		};
+
+		$.ajax({
+			type: "POST",
+			url: "/team/invite",
+			data: form_data,
+			success: function(data) {
+				if(data) alert(data);
+				else location.reload();
+			}
+		});
+	},
+	agree: function(target){
+		var form_data = {
+			team : $(target).find(".team").val()
+		};
+
+		$.ajax({
+			type: "POST",
+			url: "/team/invite_agree",
 			data: form_data,
 			success: function(data) {
 				if(data) alert(data);

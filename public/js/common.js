@@ -88,6 +88,24 @@ $(function(){
 	}
 	addTeamEvent.init();
 
+	var inviteMember = {
+		init: function() {
+			this.invite();
+			this.submit();
+		},
+		invite: function() {
+			$(".inviteTeam").on("click", function(){
+				inviteData.agree($(this));
+			});
+		},
+		submit: function() {
+			$("#memberSetting #submit").on("click", function(){
+				inviteData.add();
+			});
+		}
+	}
+	inviteMember.init();
+
 	var chooseMenuEvent = {
 		init: function() {
 			this.choose();
@@ -167,4 +185,20 @@ $(function(){
 		}
 	}
 	dropDownEvent.init();
+
+	var tabEvent = {
+		init: function() {
+			this.tab();
+		},
+		tab: function() {
+			$(".tab a").on("click", function(){
+				var li = $(this).parent();
+				$(".tabArea").hide();
+				$("#" + $(li).data("tab")).show();
+				$(".tab li").removeClass("sel");
+				$(li).addClass("sel");
+			})
+		}
+	}
+	tabEvent.init();
 });

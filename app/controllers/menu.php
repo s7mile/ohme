@@ -23,5 +23,13 @@ class Menu extends Controller {
 		$menuModel = $this->loadModel("menu_model");
 		$menuModel->cancelMenu($_POST['menuIdx'], $teamIdx);
 	}
+
+	public function select(){
+		$teamModel = $this->loadModel("team_model");
+		$teamIdx = $teamModel->getTeamIdx($_POST['team']);
+
+		$menuModel = $this->loadModel("menu_model");
+		$menuModel->selectMenu($_POST['menu'], $teamIdx);
+	}
 }
 ?>
