@@ -1,3 +1,10 @@
+<?php
+if(isset($home)){
+	$body = '<body id="main">';
+}else{
+	$body = '<body>';
+}
+?>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -7,11 +14,7 @@
 	<script type="text/javascript" src="/public/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/public/js/common.js"></script>
 </head>
-<?php if(isset($home)){?>
-<body id="main">
-<?php }else{?>
-<body>
-<?php }?>
+
 	<header id="header2">
 		<div>
 			<h1><img src="/public/img/logo.png" alt="오늘의 메뉴"></h1>
@@ -26,8 +29,8 @@
 			</ul>
 
 			<ul class="tab2">
-				<li class="sel"><a href="/user/team">팀</a></li>
-				<li><a href="/user/mypage">마이페이지</a></li>
+				<li<?= $li_1?>><a href="/user/team">팀</a></li>
+				<li<?= $li_2?>><a href="/user/mypage">마이페이지</a></li>
 			</ul>
 		</div>
 	</header>
