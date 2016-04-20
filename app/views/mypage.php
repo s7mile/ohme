@@ -1,5 +1,9 @@
 <article id="mypageHead">
-	<span></span>
+	<div class="profileArea">
+		<span></span>
+		<label for="profile" class="profileUpdate">프로필사진 수정</label>
+		<input type="file" name="profile" id="profile" class="hidden">
+	</div>
 	<h2><?= $_SESSION['loginName']?>(<?= $_SESSION['loginId']?>)</h2>
 </article>
 <article id="mypageArea">
@@ -11,7 +15,7 @@
 		</li>
 		<li>
 			<label for="userName">닉네임</label>
-			<input type="text" name="userName" id="userName" value="<?= $userInfo->user_name?>">
+			<input type="text" name="userName" id="userName" value="<?= $userInfo->user_name?>" readonly="readonly">
 		</li>
 	</ul>
 
@@ -30,6 +34,6 @@
 			<input type="password" name="newPw2" id="newPw2" placeholder="새로운 비밀번호 재입력해주세요">
 		</li>
 	</ul>
+	<input type="button" class="button" id="submit" value="변경하기">
+	<input type="reset" class="button gray" id="submit" value="취소">
 </article>
-<input type="submit" class="button" id="submit" value="변경하기">
-<input type="submit" class="button gray" id="submit" value="취소">

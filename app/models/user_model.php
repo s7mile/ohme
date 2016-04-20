@@ -20,9 +20,9 @@ class user_model {
 
 	//유저정보 가져오기
 	public function getUser($uid){
-		$sql = "SELECT * FROM user WHERE user_id=:user_id";
+		$sql = "SELECT * FROM user WHERE user_id=:user_id OR idx=:idx";
 		$query = $this->db->prepare($sql);
-		$query->execute(array(':user_id' => $uid));
+		$query->execute(array(':user_id' => $uid, ':idx' => $uid));
 		return $query->fetch();
 	}
 
@@ -60,6 +60,26 @@ class user_model {
 			movepage('/user/team');
 		} else {
 			alertmove('아이디 또는 비밀번호가 달라요');
+		}
+	}
+
+	//마이페이지
+	public function passwordUpdate($nowpw, $newpw, $newpw2){
+		$hash_newpw = password_hash(md5($newpw), PASSWORD_BCRYPT);
+
+		if($newpw != $newpw2){
+			echo '입력하신 비밀번호와 비밀번호확인이 달라요!';
+			exit();
+		}
+
+		$user = $this->getUser($_SESSION['loginId']);
+
+		if(password_verify(md5($nowpw), $user->user_pw)){
+			$sql = "UPDATE user SET user_pw=:user_pw";
+			$query = $this->db->prepare($sql);
+			$query->execute(array(':user_pw' => $hash_newpw));
+		}else{
+			echo "현재 비밀번호를 다르게 입력하셨어요!";
 		}
 	}
 }

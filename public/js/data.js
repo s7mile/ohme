@@ -120,3 +120,23 @@ var chooseData = {
 		});
 	}
 }
+
+var userData = {
+	password: function(){
+		var form_data = {
+			nowPw: $("#nowPw").val(),
+			newPw: $("#newPw").val(),
+			newPw2: $("#newPw2").val()
+		};
+
+		$.ajax({
+			type: "POST",
+			url: "/user/uiu",
+			data: form_data,
+			success: function(data) {
+				if(data) alert(data);
+				else location.reload();
+			}
+		});
+	}
+}

@@ -106,6 +106,18 @@ $(function(){
 	}
 	inviteMember.init();
 
+	var mypageEvent = {
+		init: function() {
+			this.password();
+		},
+		password: function() {
+			$("#mypageArea #submit").on("click", function(){
+				userData.password();
+			});
+		}
+	}
+	mypageEvent.init();
+
 	var chooseMenuEvent = {
 		init: function() {
 			this.choose();
