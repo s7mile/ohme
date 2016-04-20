@@ -1,5 +1,5 @@
 <?php
-	if($roulMenu){
+	if(isset($roulMenu)){
 		include "app/views/roulette.php";
 		$openRoul = "javascript:;";
 	}else{

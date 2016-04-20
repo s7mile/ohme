@@ -48,5 +48,10 @@ class User extends Controller {
 		session_destroy();
 		movepage('/');
 	}
+
+	public function uiu(){
+		$userModel = $this->loadModel("user_model");
+		$userModel->passwordUpdate($_POST['nowPw'], $_POST['newPw'], $_POST['newPw2']);
+	}
 }
 ?>

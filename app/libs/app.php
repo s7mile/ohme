@@ -12,7 +12,7 @@ class Application {
 		}
 		$params = explode('/', $url);
 		$counts = count($params);
-		$this->controller = "home";
+		$this->controller = "main";
 		$this->action = "index";
 
 		if(isset($params[0])){
