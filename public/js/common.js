@@ -109,10 +109,32 @@ $(function(){
 	var mypageEvent = {
 		init: function() {
 			this.password();
+			this.profile();
 		},
 		password: function() {
 			$("#mypageArea #submit").on("click", function(){
 				userData.password();
+			});
+		},
+		profile: function() {
+			var fileTarget = $("#profile");
+			fileTarget.on('change', function(){
+				if(window.FileReader){  // modern browser
+					var filename = $(this)[0].files[0].name;
+					if (!$(this)[0].files[0].type.match(/image\//)) return;
+		            var reader = new FileReader();
+		            reader.onload = function(e){
+		                var src = e.target.result;
+		                $(".profileArea span").css({"background": "url("+src+") center no-repeat"})
+		            }
+		            reader.readAsDataURL($(this)[0].files[0]);
+				} 
+				else {  // old IE
+					var filename = $(this).val().split('/').pop().split('\\').pop();  // 파일명만 추출
+				}
+				
+				// 추출한 파일명 삽입
+				$(this).next().text(filename);
 			});
 		}
 	}

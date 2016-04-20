@@ -740,16 +740,18 @@ section.userSection {
 	background: #fff;
 }
 .profileUpdate {
+	z-index: 1;
 	position: absolute;
-	right: 10px;
+	left: 140px;
 	bottom: 10px;
-	display: block;
+	display: inline-block;
 	width: 45px;
 	height: 45px;
-	border-radius: 50%;
+	border-radius: 45px;
 	background: url("../img/btn_photo.png") center no-repeat #e14d39;
 	text-indent: -999em;
 	cursor: pointer;
+	color: #fff;
 }
 #mypageArea {
 	margin: 10px;

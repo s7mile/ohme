@@ -1,7 +1,7 @@
 <article id="mypageHead">
 	<div class="profileArea">
 		<span></span>
-		<label for="profile" class="profileUpdate">프로필사진 수정</label>
+		<label for="profile" class="profileUpdate">프로필사진 변경</label>
 		<input type="file" name="profile" id="profile" class="hidden">
 	</div>
 	<h2><?= $_SESSION['loginName']?>(<?= $_SESSION['loginId']?>)</h2>
