@@ -50,25 +50,70 @@ class user_model {
 	}
 
 	//로그인
-	public function login($uid, $upw){
+	public function login($uid="", $upw=""){
+		if($uid == ""){
+			$res["result"] = false;
+			$res["result_msg"] = "이메일을 작성해주세요!";
+			$res["target"] = "userId";
+			echo json_encode($res);
+			exit();
+		}else if($upw == ""){
+			$res["result"] = false;
+			$res["result_msg"] = "비밀번호를 작성해주세요!";
+			$res["target"] = "userPw";
+			echo json_encode($res);
+			exit();
+		}
+
 		$uid = preg_replace("/\s+/", "", strip_tags($uid));
 		$user = $this->getUser($uid);
 		if(password_verify(md5($upw), $user->user_pw)){
 			$_SESSION['loginId'] = $user->user_id;
 			$_SESSION['loginName'] = $user->user_name;
 			$_SESSION['loginIdx'] = $user->idx;
-			movepage('/user/team');
+
+			$res["result"] = true;
+			$res["link"] = "/user/team";
+			echo json_encode($res);
+			exit();
 		} else {
-			alertmove('아이디 또는 비밀번호가 달라요');
+			$res["result"] = false;
+			$res["result_msg"] = "아이디 또는 비밀번호를 확인해주세요!";
+			$res["target"] = "userId";
+			echo json_encode($res);
+			exit();
 		}
 	}
 
 	//마이페이지
-	public function passwordUpdate($nowpw, $newpw, $newpw2){
+	public function passwordUpdate($nowpw="", $newpw="", $newpw2=""){
 		$hash_newpw = password_hash(md5($newpw), PASSWORD_BCRYPT);
 
+		if($nowpw == ""){
+			$res["result"] = false;
+			$res["result_msg"] = "현재 비밀번호를 작성해주세요!";
+			$res["target"] = "nowPw";
+			echo json_encode($res);
+			exit();
+		}else if($newpw == ""){
+			$res["result"] = false;
+			$res["result_msg"] = "새로운 비밀번호를 작성해주세요!";
+			$res["target"] = "newPw";
+			echo json_encode($res);
+			exit();
+		}else if($newpw2 == ""){
+			$res["result"] = false;
+			$res["result_msg"] = "새로운 비밀번호 확인을 작성해주세요!";
+			$res["target"] = "newPw2";
+			echo json_encode($res);
+			exit();
+		}
+
 		if($newpw != $newpw2){
-			echo '입력하신 비밀번호와 비밀번호확인이 달라요!';
+			$res["result"] = false;
+			$res["result_msg"] = "입력하신 새로운 비밀번호와 새로운 비밀번호확인이 달라요!";
+			$res["target"] = "newPw";
+			echo json_encode($res);
 			exit();
 		}
 
@@ -78,9 +123,19 @@ class user_model {
 			$sql = "UPDATE user SET user_pw=:user_pw";
 			$query = $this->db->prepare($sql);
 			$query->execute(array(':user_pw' => $hash_newpw));
+
+			$res["result"] = true;
+			$res["result_msg"] = "비밀번호가 변경되었어요!";
+			echo json_encode($res);
 		}else{
-			echo "현재 비밀번호를 다르게 입력하셨어요!";
+			$res["result"] = false;
+			$res["result_msg"] = "현재 비밀번호를 다르게 입력하셨어요!";
+			$res["target"] = "newPw";
+			echo json_encode($res);
+			exit();
 		}
+
+		
 	}
 }
 ?>

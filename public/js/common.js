@@ -213,4 +213,16 @@ $(function(){
 		}
 	}
 	tabEvent.init();
+
+	var loginEvent = {
+		init: function() {
+			this.login();
+		},
+		login: function() {
+			$(".loginArea #submit").on("click", function(){
+				userData.login();
+			});
+		}
+	}
+	loginEvent.init();
 });

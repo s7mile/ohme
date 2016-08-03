@@ -1,6 +1,6 @@
 	</section>
 	<footer>
-		<p>StartLink is cool.</p>
+		<p>빛나는전구가 만듦</p>
 	</footer>
 </body>
 </html>

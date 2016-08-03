@@ -601,7 +601,7 @@ section.userSection {
 	border-top-right-radius: 0;
 }
 .joinArea input[type="submit"], 
-.loginArea input[type="submit"] {
+.loginArea input[type="button"] {
 	width: 300px;
 	margin-top: 10px;
 }
@@ -766,9 +766,8 @@ section.userSection {
 	margin: 5px 0;
 }
 #mypageArea input {width: 983px;}
+#mypageArea input[type="button"] {width: calc(100% - 4px)}
 #mypageArea input[readonly="readonly"] {background: #ccc;}
-#mypageArea input[type="button"] {width: 855px;}
-#mypageArea input[type="reset"] {width: 300px;}
 /*[E] mypage*/
 
 /*[S] teamSetting*/

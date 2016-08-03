@@ -131,11 +131,39 @@ var userData = {
 
 		$.ajax({
 			type: "POST",
+			dataType: "json",
 			url: "/user/uiu",
 			data: form_data,
 			success: function(data) {
-				if(data) alert(data);
-				else location.reload();
+				if(data.result == false){
+					alert(data.result_msg);
+					$("#" + data.target).focus();
+				}else{
+					alert(data.result_msg);
+					location.reload();
+				}
+			}
+		});
+	},
+	login: function(){
+		var form_data = {
+			userId: $("#userId").val(),
+			userPw: $("#userPw").val()
+		};
+
+		$.ajax({
+			type: "POST",
+			dataType: "json",
+			url: "/user/login",
+			data: form_data,
+			success: function(data) {
+				console.log(data);
+				if(data.result == false){
+					alert(data.result_msg);
+					$("#" + data.target).focus();
+				}else{
+					location.href=data.link;
+				}
 			}
 		});
 	}

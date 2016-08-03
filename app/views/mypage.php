@@ -35,5 +35,4 @@
 		</li>
 	</ul>
 	<input type="button" class="button" id="submit" value="변경하기">
-	<input type="reset" class="button gray" id="submit" value="취소">
 </article>
