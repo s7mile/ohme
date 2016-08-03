@@ -852,9 +852,10 @@ footer {
 	border-top: 1px solid #e3e3e3;
 }
 footer p {
-	padding: 5px 0 10px;
+	padding: 15px 0 20px;
 	border-top: 1px solid #fff;
 	text-align: center;
 	color: #e14d39;
+	font-size: 11px;
 }
 /*[E] footer*/

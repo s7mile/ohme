@@ -1,6 +1,6 @@
 	</section>
 	<footer>
-		<p>빛나는전구가 만듦</p>
+		<p>2016 오늘의 메뉴. All rights reserved.</p>
 	</footer>
 </body>
 </html>
