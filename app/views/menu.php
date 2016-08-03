@@ -6,7 +6,7 @@
 <?php
 	foreach($menuList as $menu){
 		$sel = '';
-		if($chooseMenu !== false)
+		if(isset($chooseMenu))
 			if(in_array($menu['idx'], $chooseMenu)) $sel = ' class="sel"';
 ?>
 		<li<?php echo $sel; ?>>

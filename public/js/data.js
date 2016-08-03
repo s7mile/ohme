@@ -157,7 +157,6 @@ var userData = {
 			userPw.focus();
 		}else{
 			$("#loginForm")[0].submit();
-			console.log("흙");
 		}
 	}
 }

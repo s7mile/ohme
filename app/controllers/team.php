@@ -20,7 +20,7 @@ class team extends Controller {
 
 		$teamInfo = $teamModel->getTeamInfo($team_url);
 		$menuList = $menuModel->getMenu($teamInfo->idx);
-		$chooseMenu = $menuModel->getChooseMenuIdx();
+		$chooseMenu = $menuModel->getChooseMenuIdx($teamInfo->idx);
 
 		include 'app/views/header.php';
 		include 'app/views/menu.php';
