@@ -9,11 +9,13 @@
 </div>
 <?php
 $menu = '';
-foreach($roulMenu as $roul){
-	if($menu == '')
-		$menu .= '"'.$roul['menu_name'].'"';
-	else
-		$menu .= ',"'.$roul['menu_name'].'"';
+if($roulMenu){
+	foreach($roulMenu as $roul){
+		if($menu == '')
+			$menu .= '"'.$roul['menu_name'].'"';
+		else
+			$menu .= ',"'.$roul['menu_name'].'"';
+	}
 }
 
 echo '<script>';
