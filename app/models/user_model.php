@@ -51,37 +51,16 @@ class user_model {
 
 	//로그인
 	public function login($uid="", $upw=""){
-		if($uid == ""){
-			$res["result"] = false;
-			$res["result_msg"] = "이메일을 작성해주세요!";
-			$res["target"] = "userId";
-			echo json_encode($res);
-			exit();
-		}else if($upw == ""){
-			$res["result"] = false;
-			$res["result_msg"] = "비밀번호를 작성해주세요!";
-			$res["target"] = "userPw";
-			echo json_encode($res);
-			exit();
-		}
-
 		$uid = preg_replace("/\s+/", "", strip_tags($uid));
 		$user = $this->getUser($uid);
+		if($user == ""){alertmove("가입되지 않은 아이디에요");}
 		if(password_verify(md5($upw), $user->user_pw)){
 			$_SESSION['loginId'] = $user->user_id;
 			$_SESSION['loginName'] = $user->user_name;
 			$_SESSION['loginIdx'] = $user->idx;
-
-			$res["result"] = true;
-			$res["link"] = "/user/team";
-			echo json_encode($res);
-			exit();
+			movepage('/user/team');
 		} else {
-			$res["result"] = false;
-			$res["result_msg"] = "아이디 또는 비밀번호를 확인해주세요!";
-			$res["target"] = "userId";
-			echo json_encode($res);
-			exit();
+			alertmove('비밀번호가 달라요');
 		}
 	}
 

@@ -146,25 +146,18 @@ var userData = {
 		});
 	},
 	login: function(){
-		var form_data = {
-			userId: $("#userId").val(),
-			userPw: $("#userPw").val()
-		};
+		var userId = $("#userId"),
+			userPw = $("#userPw");
 
-		$.ajax({
-			type: "POST",
-			dataType: "json",
-			url: "/user/login",
-			data: form_data,
-			success: function(data) {
-				console.log(data);
-				if(data.result == false){
-					alert(data.result_msg);
-					$("#" + data.target).focus();
-				}else{
-					location.href=data.link;
-				}
-			}
-		});
+		if(userId.val() == ""){
+			alert("아이디를 작성해주세요!");
+			userId.focus();
+		}else if(userPw.val() == ""){
+			alert("비밀번호를 작성해주세요!");
+			userPw.focus();
+		}else{
+			$("#loginForm")[0].submit();
+			console.log("흙");
+		}
 	}
 }

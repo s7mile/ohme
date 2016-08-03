@@ -219,7 +219,7 @@ $(function(){
 			this.login();
 		},
 		login: function() {
-			$(".loginArea #submit").on("click", function(){
+			$(".loginArea #submitBtn").on("click", function(){
 				userData.login();
 			});
 		}
