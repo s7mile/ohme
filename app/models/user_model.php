@@ -67,35 +67,6 @@ class user_model {
 	//마이페이지
 	public function passwordUpdate($nowpw="", $newpw="", $newpw2=""){
 		$hash_newpw = password_hash(md5($newpw), PASSWORD_BCRYPT);
-
-		if($nowpw == ""){
-			$res["result"] = false;
-			$res["result_msg"] = "현재 비밀번호를 작성해주세요!";
-			$res["target"] = "nowPw";
-			echo json_encode($res);
-			exit();
-		}else if($newpw == ""){
-			$res["result"] = false;
-			$res["result_msg"] = "새로운 비밀번호를 작성해주세요!";
-			$res["target"] = "newPw";
-			echo json_encode($res);
-			exit();
-		}else if($newpw2 == ""){
-			$res["result"] = false;
-			$res["result_msg"] = "새로운 비밀번호 확인을 작성해주세요!";
-			$res["target"] = "newPw2";
-			echo json_encode($res);
-			exit();
-		}
-
-		if($newpw != $newpw2){
-			$res["result"] = false;
-			$res["result_msg"] = "입력하신 새로운 비밀번호와 새로운 비밀번호확인이 달라요!";
-			$res["target"] = "newPw";
-			echo json_encode($res);
-			exit();
-		}
-
 		$user = $this->getUser($_SESSION['loginId']);
 
 		if(password_verify(md5($nowpw), $user->user_pw)){
@@ -103,15 +74,9 @@ class user_model {
 			$query = $this->db->prepare($sql);
 			$query->execute(array(':user_pw' => $hash_newpw));
 
-			$res["result"] = true;
-			$res["result_msg"] = "비밀번호가 변경되었어요!";
-			echo json_encode($res);
+			return 1;
 		}else{
-			$res["result"] = false;
-			$res["result_msg"] = "현재 비밀번호를 다르게 입력하셨어요!";
-			$res["target"] = "newPw";
-			echo json_encode($res);
-			exit();
+			return 0;
 		}
 
 		

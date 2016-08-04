@@ -63,11 +63,21 @@ var inviteData = {
 
 		$.ajax({
 			type: "POST",
+			dataType: "json",
 			url: "/team/invite",
 			data: form_data,
 			success: function(data) {
-				if(data) alert(data);
-				else location.reload();
+				console.log(data);
+				if(data.result == false){
+					alert(data.result_msg);
+					$("#" + data.target).focus();
+				}else{
+					alert(data.result_msg);
+					location.reload();
+				}
+			},
+			error: function(err){
+				console.log(err);
 			}
 		});
 	},

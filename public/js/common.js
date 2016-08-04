@@ -94,12 +94,14 @@ $(function(){
 			this.submit();
 		},
 		invite: function() {
+			//초대 동의
 			$(".inviteTeam").on("click", function(){
 				inviteData.agree($(this));
 			});
 		},
 		submit: function() {
-			$("#memberSetting #submit").on("click", function(){
+			//멤버 초대하기
+			$("#memberSetting #submitBtn").on("click", function(){
 				inviteData.add();
 			});
 		}
