@@ -15,7 +15,7 @@
 	<header id="header1">
 		<div>
 			<h1>
-				<a href="/user/team">
+				<a href="/">
 					<img src="/public/img/logo_white.png" alt="오늘의 메뉴">
 				</a>
 			</h1>

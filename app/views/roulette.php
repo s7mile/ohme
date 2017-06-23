@@ -10,7 +10,7 @@
 <?php
 $menu = '';
 if($roulMenu != false){
-	foreach($roulMenu as $roul){
+	foreach($roulMenu[0] as $roul){
 		if($menu == '')
 			$menu .= '"'.$roul['menu_name'].'"';
 		else

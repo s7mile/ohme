@@ -16,6 +16,23 @@ var menuData = {
 			}
 		});
 	},
+	update: function(){
+		var form_data = {
+			name: $("#name").val(),
+			tag: $("#sendTag").val(),
+			idx: $("#menuIdx").val()
+		};
+
+		$.ajax({
+			type: "POST",
+			url: "/menu/update",
+			data: form_data,
+			success: function(data) {
+				if(data) alert(data);
+				else location.reload();
+			}
+		});
+	},
 	select: function(menu){
 		var form_data = {
 			menu: menu,
@@ -135,7 +152,10 @@ var userData = {
 			data: form_data,
 			success: function(data) {
 				if(data) alert(data);
-				else location.reload();
+				else{
+					alert("변경되었어요!");
+					location.reload();
+				}
 			}
 		});
 	}

@@ -3,6 +3,8 @@ class User extends Controller {
 	public function index(){}
 
 	public function team(){
+		sessionChk("로그인 후 이용가능해요!", "/login");
+
 		$teamModel = $this->loadModel("team_model");
 		$teamList = $teamModel->getMyTeam();
 		
@@ -15,6 +17,8 @@ class User extends Controller {
 	}
 
 	public function mypage(){
+		sessionChk("로그인 후 이용가능해요!", "/login");
+		
 		$teamModel = $this->loadModel("team_model");
 		$teamList = $teamModel->getMyTeam();
 
@@ -24,12 +28,16 @@ class User extends Controller {
 		$li_1 = '';
 		$li_2 = ' class="sel"';
 
+		$userProfileLink = userProfile($_SESSION['loginId'], $userInfo->user_profile_name, 1);
+
 		include 'app/views/header2.php';
 		include 'app/views/mypage.php';
 		include 'app/views/footer.php';
 	}
 
 	public function add(){
+		sessionChk("잘못된 접근이에요!", "/");
+		
 		$teamModel = $this->loadModel("team_model");
 		$teamModel->addTeam($_POST['name'], $_POST['desc']);
 	}
@@ -50,8 +58,23 @@ class User extends Controller {
 	}
 
 	public function uiu(){
+		sessionChk("잘못된 접근이에요!", "/");
+		
 		$userModel = $this->loadModel("user_model");
 		$userModel->passwordUpdate($_POST['nowPw'], $_POST['newPw'], $_POST['newPw2']);
+	}
+
+	public function profileUpdate(){
+		sessionChk("잘못된 접근이에요!", "/");
+		
+		$file = $_FILES['profile'];
+		if($file_name = fileChk($file, "img")){
+			thumbImg($file_name, "./data/member/".md5($_SESSION['loginId']).'/', "200", "200");
+		}
+		$userModel = $this->loadModel("user_model");
+		$userModel->profileUpdate($file['name'], $file_name);
+
+		movepage();
 	}
 }
 ?>

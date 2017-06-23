@@ -10,7 +10,7 @@ class user_model {
 
 	//이메일 중복체크
 	public function emailCheck($uid){
-		$sql = "SELECT count(*) FROM user WHERE user_id=':user_id'";
+		$sql = "SELECT count(*) FROM user WHERE user_id=:user_id";
 		$query = $this->db->prepare($sql);
 		$query->execute(array(':user_id' => $uid));
 		if($query->fetchColumn() > 0) return 0;
@@ -20,17 +20,18 @@ class user_model {
 
 	//유저정보 가져오기
 	public function getUser($uid){
-		$sql = "SELECT * FROM user WHERE user_id=:user_id OR idx=:idx";
+		$sql = "SELECT * FROM user WHERE user_id=:user_id OR idx=:idx limit 1";
 		$query = $this->db->prepare($sql);
 		$query->execute(array(':user_id' => $uid, ':idx' => $uid));
 		return $query->fetch();
 	}
 
 	public function getUserIdx($uid){
-		$sql = "SELECT idx FROM user WHERE user_id=:user_id";
+		$sql = "SELECT idx FROM user WHERE user_id=:user_id limit 1";
 		$query = $this->db->prepare($sql);
 		$query->execute(array(':user_id' => $uid));
-		return $query->fetch()->idx;
+		if($query->fetch()) return $query->fetch()->idx;
+		else return -1;
 	}
 
 	//회원가입
@@ -75,12 +76,19 @@ class user_model {
 		$user = $this->getUser($_SESSION['loginId']);
 
 		if(password_verify(md5($nowpw), $user->user_pw)){
-			$sql = "UPDATE user SET user_pw=:user_pw";
+			$sql = "UPDATE user SET user_pw=:user_pw WHERE idx=:idx";
 			$query = $this->db->prepare($sql);
-			$query->execute(array(':user_pw' => $hash_newpw));
+			$query->execute(array(':user_pw' => $hash_newpw, ':idx' => $_SESSION['loginIdx']));
 		}else{
 			echo "현재 비밀번호를 다르게 입력하셨어요!";
 		}
+	}
+
+	//마이페이지
+	public function profileUpdate($file_org, $file_new){
+		$sql = "UPDATE user SET user_profile=:user_profile, user_profile_name=:user_profile_name WHERE idx=:idx";
+		$query = $this->db->prepare($sql);
+		$query->execute(array(':user_profile' => $file_org, ':user_profile_name' => $file_new, ':idx' => $_SESSION['loginIdx']));
 	}
 }
 ?>

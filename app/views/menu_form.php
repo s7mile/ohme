@@ -1,9 +1,10 @@
 <article id="addMenu" class="modal">
 	<div class="bg"></div>
 	<div class="wrap">
-		<h2>맛 좋은 메뉴 추가</h2>
+		<h2>맛 좋은 메뉴 <span></span></h2>
 		<div class="cont">
 			<input type="hidden" id="team" name="team" value="<?= $team_url?>">
+			<input type="hidden" id="menuIdx" name="menuIdx">
 			<div>
 				<label for="name">식당이름</label>
 				<input type="text" id="name" name="name" placeholder="식당이름">
