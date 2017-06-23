@@ -1,11 +1,8 @@
 <article id="mypageHead">
 	<div class="profileArea">
-		<span><img src="<?= $userProfileLink?>" alt=""></span>
+		<span></span>
 		<label for="profile" class="profileUpdate">프로필사진 변경</label>
-		<form enctype="multipart/form-data" action="/user/profileUpdate" method="post">
-			<input type="file" name="profile" id="profile" class="hidden">
-			<input type="submit" value="변경" id="submit">
-		</form>
+		<input type="file" name="profile" id="profile" class="hidden">
 	</div>
 	<h2><?= $_SESSION['loginName']?>(<?= $_SESSION['loginId']?>)</h2>
 </article>
@@ -38,4 +35,5 @@
 		</li>
 	</ul>
 	<input type="button" class="button" id="submit" value="변경하기">
+	<input type="reset" class="button gray" id="submit" value="취소">
 </article>

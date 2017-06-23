@@ -23,8 +23,7 @@
 				<ul>
 					<li><a href="/<?=$team_url?>">홈</a></li>
 					<li><a href="/<?=$team_url?>/menu">메뉴판</a></li>
-					<li><a href="javascript: alert('준비중입니다');">랭킹</a></li>
-					<? /* /rank */ ?>
+					<li><a href="/<?=$team_url?>/rank">랭킹</a></li>
 					<li><a href="/<?=$team_url?>/setting">관리</a></li>
 				</ul>
 			</nav>

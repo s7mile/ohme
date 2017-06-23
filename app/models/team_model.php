@@ -9,7 +9,7 @@ class team_model {
 	}
  
 	public function getMyTeam(){
-		$sql = "SELECT t.team_name, t.team_desc, t.team_url, u.user_idx, u.team_idx, u.join_date, u.status, (SELECT COUNT(*) FROM user_team where team_idx=u.team_idx) as c FROM team t LEFT JOIN user_team u ON t.idx=u.team_idx WHERE u.user_idx=:user_idx order by u.status asc, u.join_date asc";
+		$sql = "SELECT t.team_name, t.team_desc, t.team_url, u.user_idx, u.team_idx, u.join_date, u.status FROM team t LEFT JOIN user_team u ON t.idx=u.team_idx WHERE u.user_idx=:user_idx order by u.status asc, u.join_date asc";
 		$query = $this->db->prepare($sql);
 		$query->execute(array(':user_idx' => $_SESSION['loginIdx']));
 		return $query->fetchAll(PDO::FETCH_ASSOC);
@@ -37,7 +37,7 @@ class team_model {
 	}
 
 	public function getMemberList($team_idx){
-		$sql = "SELECT t.user_idx, t.team_idx, t.join_date, t.status, u.user_id, u.user_name, u.user_profile, (SELECT final_date FROM choose where team_idx=t.team_idx and user_idx=u.idx ORDER BY final_date DESC LIMIT 1) as final_date FROM user_team t LEFT JOIN user u ON t.user_idx=u.idx WHERE t.team_idx=:team_idx order by t.status desc, t.join_date asc";
+		$sql = "SELECT t.user_idx, t.team_idx, t.join_date, t.status, u.user_id, u.user_name, u.user_profile FROM user_team t LEFT JOIN user u ON t.user_idx=u.idx WHERE t.team_idx=:team_idx order by t.status desc, t.join_date asc";
 		$query = $this->db->prepare($sql);
 		$query->execute(array(':team_idx' => $team_idx));
 		$memberList = $query->fetchAll();

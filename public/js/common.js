@@ -30,7 +30,6 @@ $(function(){
 	var addMenuEvent = {
 		init: function() {
 			this.open();
-			this.updateOpen();
 			this.close();
 			this.tagEvent();
 			this.submit();
@@ -39,33 +38,11 @@ $(function(){
 			$(".button.add").on("click", function(){
 				$("#addMenu.modal").fadeIn();
 				$(".cont #name").focus();
-				$("#addMenu h2 span").text("추가");
-				$("#addMenu #submit").val("등록");
-			});	
-		},
-		updateOpen: function() {
-			$("#menuChoose .other").on("click", function(){
-				var selInfo = $(this).prev("a");
-				$("#addMenu.modal").fadeIn();
-				$(".cont #name").focus();
-				$("#menuIdx").val($(this).prev("a").data("menu"));
-				$("#addMenu h2 span").text("수정");
-				$("#addMenu #name").val($(selInfo).find("h3").text());
-				$("#addMenu #tagList").html($(selInfo).find(".tag").html());
-				$("#addMenu #submit").val("수정");
-
-				var tag = [];
-				$(selInfo).find(".tag span").each(function(){
-					tag.push($(this).text());
-				});
-				$("#sendTag").val(tag.join());
 			});	
 		},
 		close: function() {
 			$("#addMenu.modal .bg, #addMenu.modal .close").on("click", function(){
 				$("#addMenu.modal").fadeOut();
-				$("#menuIdx, #sendTag").val("");
-				$("#tagList").html("");
 			});	
 		},
 		tagEvent: function() {
@@ -80,10 +57,7 @@ $(function(){
 		},
 		submit: function() {
 			$("#addMenu #submit").on("click", function(){
-				if($("#menuIdx").val())
-					menuData.update();
-				else
-					menuData.add();
+				menuData.add();
 			});
 		}
 	}
@@ -120,14 +94,12 @@ $(function(){
 			this.submit();
 		},
 		invite: function() {
-			//초대 동의
 			$(".inviteTeam").on("click", function(){
 				inviteData.agree($(this));
 			});
 		},
 		submit: function() {
-			//멤버 초대하기
-			$("#memberSetting #submitBtn").on("click", function(){
+			$("#memberSetting #submit").on("click", function(){
 				inviteData.add();
 			});
 		}
@@ -163,8 +135,6 @@ $(function(){
 				
 				// 추출한 파일명 삽입
 				$(this).next().text(filename);
-
-				$(".profileArea #submit").show();
 			});
 		}
 	}
@@ -265,35 +235,4 @@ $(function(){
 		}
 	}
 	tabEvent.init();
-
-<<<<<<< HEAD
-	var mouseoverEvent = {
-		init: function() {
-			this.userNameShow();
-		},
-		userNameShow: function() {
-			$(".member span").hover(
-				function(){
-					$(this).next().show();
-				},
-				function(){
-					$(this).next().hide();
-				}
-			);
-		}
-	}
-	mouseoverEvent.init();
-=======
-	var loginEvent = {
-		init: function() {
-			this.login();
-		},
-		login: function() {
-			$(".loginArea #submitBtn").on("click", function(){
-				userData.login();
-			});
-		}
-	}
-	loginEvent.init();
->>>>>>> fa3efbb5f3a0cdcb5593a8d70c70a1195817e5f6
 });

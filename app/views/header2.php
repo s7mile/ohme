@@ -24,7 +24,7 @@ if(isset($home)){
 			</a>
 			<ul class="user dropDown right">
 				<li><span><?= $_SESSION['loginName']?>님</span></li>
-				<li><a href="/user/mypage">마이페이지</a></li>
+				<li><a href="/mypage">마이페이지</a></li>
 				<li><a href="/user/logout">로그아웃</a></li>
 			</ul>
 

@@ -16,23 +16,6 @@ var menuData = {
 			}
 		});
 	},
-	update: function(){
-		var form_data = {
-			name: $("#name").val(),
-			tag: $("#sendTag").val(),
-			idx: $("#menuIdx").val()
-		};
-
-		$.ajax({
-			type: "POST",
-			url: "/menu/update",
-			data: form_data,
-			success: function(data) {
-				if(data) alert(data);
-				else location.reload();
-			}
-		});
-	},
 	select: function(menu){
 		var form_data = {
 			menu: menu,
@@ -80,21 +63,11 @@ var inviteData = {
 
 		$.ajax({
 			type: "POST",
-			dataType: "json",
 			url: "/team/invite",
 			data: form_data,
 			success: function(data) {
-				console.log(data);
-				if(data.result == false){
-					alert(data.result_msg);
-					$("#" + data.target).focus();
-				}else{
-					alert(data.result_msg);
-					location.reload();
-				}
-			},
-			error: function(err){
-				console.log(err);
+				if(data) alert(data);
+				else location.reload();
 			}
 		});
 	},
@@ -158,38 +131,12 @@ var userData = {
 
 		$.ajax({
 			type: "POST",
-			dataType: "json",
 			url: "/user/uiu",
 			data: form_data,
 			success: function(data) {
-<<<<<<< HEAD
 				if(data) alert(data);
-				else{
-					alert("변경되었어요!");
-=======
-				if(data.result == false){
-					alert(data.result_msg);
-					$("#" + data.target).focus();
-				}else{
-					alert(data.result_msg);
->>>>>>> fa3efbb5f3a0cdcb5593a8d70c70a1195817e5f6
-					location.reload();
-				}
+				else location.reload();
 			}
 		});
-	},
-	login: function(){
-		var userId = $("#userId"),
-			userPw = $("#userPw");
-
-		if(userId.val() == ""){
-			alert("아이디를 작성해주세요!");
-			userId.focus();
-		}else if(userPw.val() == ""){
-			alert("비밀번호를 작성해주세요!");
-			userPw.focus();
-		}else{
-			$("#loginForm")[0].submit();
-		}
 	}
 }

@@ -6,7 +6,7 @@
 <?php
 	foreach($menuList as $menu){
 		$sel = '';
-		if(isset($chooseMenu))
+		if($chooseMenu !== false)
 			if(in_array($menu['idx'], $chooseMenu)) $sel = ' class="sel"';
 ?>
 		<li<?php echo $sel; ?>>
@@ -22,17 +22,19 @@
 						<p class="star"></p>
 						<p class="visit">6일전에 방문</p>
 					</li>
-					<li class="tag"><?php
+					<li class="tag">
+						<?php
 						$tags = explode(",", $menu['menu_tag']);
 						foreach($tags as $tag)
 							echo '<span>'.$tag.'</span>';
-					?></li>
+						?>
+					</li>
 				</ul>
 			</a>
-			<a href="javascript:;" class="other"></a>
+			<a href="javascript: alert('메뉴편집은 거부한닷!');" class="other"></a>
 		</li>
 <?php } ?>
 </ul>
 <?php
-	include "app/views/menu_form.php";
+	include "app/views/menu_add.php";
 ?>

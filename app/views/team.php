@@ -25,7 +25,7 @@
 				<p class="desc"><?= $team['team_desc']?></p>
 				<p class="updateMenu">최근에 선택한 메뉴 : 심슨탕(3일 전)</p>
 			</div>
-			<p class="member"><?= $team['c']?>명</p>
+			<p class="member">5명</p>
 		</a>
 	</li>
 	<?php
