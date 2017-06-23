@@ -62,6 +62,7 @@ class team extends Controller {
 	}
 
 	public function invite(){
+<<<<<<< HEAD
 		sessionChk("잘못된 접근이에요!", "/");
 
 		$userModel = $this->loadModel("user_model");
@@ -71,6 +72,36 @@ class team extends Controller {
 
 		$teamModel = $this->loadModel("team_model");
 		$teamModel->inviteTeam($user_idx, $_POST['team']);
+=======
+		$userId = "";
+		$userId = $_POST['userid'];
+
+		if($userId == ""){
+			$res["result"] = false;
+			$res["result_msg"] = "초대할 팀원의 이메일을 적어주세요!";
+			$res["target"] = "join_user";
+			echo json_encode($res);
+			exit();
+		}else{
+			$userModel = $this->loadModel("user_model");
+			$user_idx = $userModel->getUserIdx($userId);
+
+			if($user_idx){	
+				$teamModel = $this->loadModel("team_model");
+				$teamModel->inviteTeam($user_idx, $_POST['team']);
+				$res['result'] = true;
+				$res['result_msg'] = '초대했어요! 팀원이 동의할 때까지 기다려주세요!';
+				echo json_encode($res);
+			}else{
+				$res['result'] = false;
+				$res['result_msg'] = '입력하신 이메일로 가입된 분이 없어요ㅠㅠ';
+				$res['target'] = 'join_user';
+				echo json_encode($res);
+			}
+		}
+
+
+>>>>>>> fa3efbb5f3a0cdcb5593a8d70c70a1195817e5f6
 	}
 
 	public function invite_agree(){

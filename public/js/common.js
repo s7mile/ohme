@@ -120,12 +120,14 @@ $(function(){
 			this.submit();
 		},
 		invite: function() {
+			//초대 동의
 			$(".inviteTeam").on("click", function(){
 				inviteData.agree($(this));
 			});
 		},
 		submit: function() {
-			$("#memberSetting #submit").on("click", function(){
+			//멤버 초대하기
+			$("#memberSetting #submitBtn").on("click", function(){
 				inviteData.add();
 			});
 		}
@@ -264,6 +266,7 @@ $(function(){
 	}
 	tabEvent.init();
 
+<<<<<<< HEAD
 	var mouseoverEvent = {
 		init: function() {
 			this.userNameShow();
@@ -280,4 +283,17 @@ $(function(){
 		}
 	}
 	mouseoverEvent.init();
+=======
+	var loginEvent = {
+		init: function() {
+			this.login();
+		},
+		login: function() {
+			$(".loginArea #submitBtn").on("click", function(){
+				userData.login();
+			});
+		}
+	}
+	loginEvent.init();
+>>>>>>> fa3efbb5f3a0cdcb5593a8d70c70a1195817e5f6
 });

@@ -11,8 +11,13 @@
 <article id="memberSetting">
 	<div class="invite">
 		<input type="hidden" id="team" name="team" value="<?= $team_url?>">
+<<<<<<< HEAD
 		<input type="text" id="join_user" name="join_user" placeholder="ohme@ohme.com">
 		<input type="button" class="button" id="submit" value="초대하기">
+=======
+		<input type="text" id="join_user" name="join_user" placeholder="초대할 팀원의 이메일">
+		<input type="button" class="button" id="submitBtn" value="초대하기">
+>>>>>>> fa3efbb5f3a0cdcb5593a8d70c70a1195817e5f6
 	</div>
 
 	<ul class="tableHead">

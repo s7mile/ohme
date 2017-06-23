@@ -809,8 +809,7 @@ section.userSection {
 }
 #mypageArea input {width: 983px;}
 #mypageArea input[readonly="readonly"] {background: #ccc;}
-#mypageArea input[type="button"] {width: 855px;}
-#mypageArea input[type="reset"] {width: 300px;}
+#mypageArea input[type="button"] {width: calc(100% - 4px);}
 /*[E] mypage*/
 
 /*[S] teamSetting*/

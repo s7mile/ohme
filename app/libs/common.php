@@ -143,10 +143,13 @@ function userProfilePrint($id, $name, $file){
 		echo '<img src="'.userProfile($id, $file, 1).'" alt="'.$name.'">';
 	echo '</span>';
 }
+<<<<<<< HEAD
 
 function sessionChk($msg, $link=""){
 	if(!( isset($_SESSION['loginId']) && isset($_SESSION['loginIdx']) && isset($_SESSION['loginName']) )){
 		alertmove($msg, $link);
 	}
 }
+=======
+>>>>>>> fa3efbb5f3a0cdcb5593a8d70c70a1195817e5f6
 ?>

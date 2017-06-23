@@ -51,37 +51,40 @@ class user_model {
 	}
 
 	//로그인
-	public function login($uid, $upw){
+	public function login($uid="", $upw=""){
 		$uid = preg_replace("/\s+/", "", strip_tags($uid));
 		$user = $this->getUser($uid);
+		if($user == ""){alertmove("가입되지 않은 아이디에요");}
 		if(password_verify(md5($upw), $user->user_pw)){
 			$_SESSION['loginId'] = $user->user_id;
 			$_SESSION['loginName'] = $user->user_name;
 			$_SESSION['loginIdx'] = $user->idx;
 			movepage('/user/team');
 		} else {
-			alertmove('아이디 또는 비밀번호가 달라요');
+			alertmove('비밀번호가 달라요');
 		}
 	}
 
 	//마이페이지
-	public function passwordUpdate($nowpw, $newpw, $newpw2){
+	public function passwordUpdate($nowpw="", $newpw="", $newpw2=""){
 		$hash_newpw = password_hash(md5($newpw), PASSWORD_BCRYPT);
-
-		if($newpw != $newpw2){
-			echo '입력하신 비밀번호와 비밀번호확인이 달라요!';
-			exit();
-		}
-
 		$user = $this->getUser($_SESSION['loginId']);
 
 		if(password_verify(md5($nowpw), $user->user_pw)){
 			$sql = "UPDATE user SET user_pw=:user_pw WHERE idx=:idx";
 			$query = $this->db->prepare($sql);
+<<<<<<< HEAD
 			$query->execute(array(':user_pw' => $hash_newpw, ':idx' => $_SESSION['loginIdx']));
+=======
+			$query->execute(array(':user_pw' => $hash_newpw));
+
+			return 1;
+>>>>>>> fa3efbb5f3a0cdcb5593a8d70c70a1195817e5f6
 		}else{
-			echo "현재 비밀번호를 다르게 입력하셨어요!";
+			return 0;
 		}
+
+		
 	}
 
 	//마이페이지
