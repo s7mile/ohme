@@ -41,7 +41,7 @@
 		</li>
 		<?php
 		}else{
-			foreach($roulMenu as $menu){
+			foreach($roulMenu[0] as $menu){
 		?>
 		<li>
 			<span>
@@ -63,6 +63,14 @@
 					?>
 				</li>
 			</ul>
+			<ul class="member">
+				<?php foreach($roulMenu[1][$menu['idx']] as $member){ ?>
+				<li>
+					<?php userProfilePrint($member['id'], $member['name'], $member['img']); ?>
+					<p><?= $member['name']?></p>
+				</li>
+				<?php } ?>
+			</ul>
 		</li>
 		<?php
 			}
@@ -70,6 +78,7 @@
 		?>
 	</ul>
 </div>
+<? /*
 <div id="todayMenu">
 	<h2>오늘 별로 안땡겨요</h2>
 	<ul class="menuList">
@@ -106,3 +115,4 @@
 		?>
 	</ul>
 </div>
+*/ ?>

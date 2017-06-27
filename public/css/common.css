@@ -1,7 +1,5 @@
 @charset "utf-8";
-@import url("https://googledrive.com/host/0BxmAw3HA4YGCfkpJRUw0RGNraDFnVzRFdjhaQnRFQ3BzZ00tRFZobGlKcmprb1hiSUFvZkE/nanumbarunpenr.css");
-@import url("https://googledrive.com/host/0BxmAw3HA4YGCfnE1U2tYVjN2UkVLWnEzaVdsWDRUZ3VFbmpJckF3UG56WkpLSUxKMXFaTlU/nanumbarunpenb.css");
-
+@import url("font.css");
 
 /* [S] reset */
 body {
@@ -40,13 +38,14 @@ input[type="text"], input[type="password"] {
 	border: 1px solid #ccc;
 }
 .fl {float: left;}
+.di {display: inline;}
 .hidden {display: none;}
 /* [E] reset */
 
 body#main {background: url("../img/bg_main.jpg") repeat-x 0 -70px #fcfcfc;}
 /*[S] header*/
 header#header1 {
-	z-index: 2;
+	z-index: 999;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -59,7 +58,7 @@ header#header1 h1 {
 	position: absolute;
 	left: 10px;
 	top: 8px;
-	width: 147px;
+	/*width: 147px;*/
 	font-size: 17px;
 }
 /*header#header1 h1 {
@@ -67,6 +66,7 @@ header#header1 h1 {
 	text-align: center;
 }*/
 header#header1 h1 img {height: 45px;}
+header a {color: #fff;}
 header#header1 nav {
 	height: 100%;
 }
@@ -298,13 +298,13 @@ section.userSection {
 /*[E] botton*/
 
 /*[S] menulist*/
-.buttonArea {
+.topArea {
 	clear: both;
 	overflow: hidden;
 	margin-bottom: 5px;
 }
-.buttonArea .allSel {float: left;}
-.buttonArea .add {float: right;}
+.topArea #nowPos {float: left;}
+.topArea .add {float: right;}
 .menuList {
 	clear: both;
 	overflow: hidden;
@@ -768,9 +768,36 @@ section.userSection {
 	margin: 5px 0;
 }
 #mypageArea input {width: 983px;}
+#mypageArea input#x,
+#mypageArea input#y {width: 200px;}
+#mypageArea input#address {width: 500px;}
+#mypageArea input#tag {width: 300px;}
 #mypageArea input[readonly="readonly"] {background: #ccc;}
 #mypageArea input[type="button"] {width: 855px;}
+#mypageArea input[type="button"]#addTag {width: auto;}
 #mypageArea input[type="reset"] {width: 300px;}
+
+#mypageArea #map {
+	position: relative;
+	width: 100%;
+	height: 400px;
+}
+
+#mypageArea #map .searchArea {
+	position: absolute;
+	left: 20px;
+	top: 20px;
+	z-index: 99
+}
+
+#mypageArea #map .searchArea input[type="text"] {
+	width: 200px;
+}
+#mypageArea #map .searchArea input[type="button"] {
+	width: auto;
+}
+
+
 /*[E] mypage*/
 
 /*[S] teamSetting*/

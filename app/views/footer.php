@@ -1,6 +1,6 @@
 	</section>
 	<footer>
-		<p>StartLink is cool.</p>
+		<p>Ohme is cool.</p>
 	</footer>
 </body>
 </html>
