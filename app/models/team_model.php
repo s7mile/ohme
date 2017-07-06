@@ -9,7 +9,7 @@ class team_model {
 	}
  
 	public function getMyTeam(){
-		$sql = "SELECT t.team_name, t.team_desc, t.team_url, u.user_idx, u.team_idx, u.join_date, u.status FROM team t LEFT JOIN user_team u ON t.idx=u.team_idx WHERE u.user_idx=:user_idx order by u.status asc, u.join_date asc";
+		$sql = "SELECT t.team_name, t.team_desc, t.team_url, u.user_idx, u.team_idx, u.join_date, u.status, (SELECT COUNT(idx) FROM user_team ut where team_idx = t.idx) As c FROM team t LEFT JOIN user_team u ON t.idx=u.team_idx WHERE u.user_idx=:user_idx order by u.status asc, u.join_date asc";
 		$query = $this->db->prepare($sql);
 		$query->execute(array(':user_idx' => $_SESSION['loginIdx']));
 		return $query->fetchAll(PDO::FETCH_ASSOC);

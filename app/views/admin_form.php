@@ -1,4 +1,4 @@
-<article id="mypageArea">
+<article id="adminAdd" class="formArea">
 	<h2>메뉴(음식점) 추가</h2>
 	<div id="map">
 		<div class="searchArea">

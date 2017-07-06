@@ -753,47 +753,54 @@ section.userSection {
 	cursor: pointer;
 	color: #fff;
 }
+.formArea, 
 #mypageArea {
 	margin: 10px;
 }
+.formArea label,
 #mypageArea label {
 	display: inline-block;
 	width: 150px;
 }
+.formArea ul,
 #mypageArea ul {
 	margin-bottom: 50px;
 }
+.formArea li,
 #mypageArea li {
 	height: 42px;
 	margin: 5px 0;
 }
+.formArea input,
 #mypageArea input {width: 983px;}
-#mypageArea input#x,
-#mypageArea input#y {width: 200px;}
-#mypageArea input#address {width: 500px;}
-#mypageArea input#tag {width: 300px;}
+.formArea input#x,
+.formArea input#y {width: 200px;}
+.formArea input#address {width: 500px;}
+.formArea input#tag {width: 300px;}]
 #mypageArea input[readonly="readonly"] {background: #ccc;}
+.formArea input[type="button"],
 #mypageArea input[type="button"] {width: 855px;}
-#mypageArea input[type="button"]#addTag {width: auto;}
+.formArea input[type="button"]#addTag {width: auto;}
+.formArea input[type="reset"],
 #mypageArea input[type="reset"] {width: 300px;}
 
-#mypageArea #map {
+.formArea #map {
 	position: relative;
 	width: 100%;
 	height: 400px;
 }
 
-#mypageArea #map .searchArea {
+.formArea #map .searchArea {
 	position: absolute;
 	left: 20px;
 	top: 20px;
 	z-index: 99
 }
 
-#mypageArea #map .searchArea input[type="text"] {
+.formArea #map .searchArea input[type="text"] {
 	width: 200px;
 }
-#mypageArea #map .searchArea input[type="button"] {
+.formArea #map .searchArea input[type="button"] {
 	width: auto;
 }
 

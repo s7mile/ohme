@@ -1,11 +1,21 @@
 <?php
 class Menu extends Controller {
 	public function add(){
-		$teamModel = $this->loadModel("team_model");
-		$teamIdx = $teamModel->getTeamIdx($_POST['team']);
-
+		if(isset($_POST['team'])){
+			$teamModel = $this->loadModel("team_model");
+			$teamIdx = $teamModel->getTeamIdx($_POST['team']);
+			$data['team'] = $teamIdx;
+		}else{
+			$data['team'] = 0;
+		}
 		$menuModel = $this->loadModel("menu_model");
-		$menuModel->addMenu($_POST['name'], $_POST['tag'], $teamIdx);
+
+		$data['name'] = $_POST['name'];
+		$data['tag'] = $_POST['tag'];
+		isset($_POST['x'])? $data['x'] = $_POST['x'] : $data['x'] = 0;
+		isset($_POST['y'])? $data['y'] = $_POST['y'] : $data['y'] = 0;
+		isset($_POST['address'])? $data['address'] = $_POST['address'] : $data['address'] = "";
+		$menuModel->addMenu($data);
 	}
 
 	public function choose(){

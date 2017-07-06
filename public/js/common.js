@@ -33,6 +33,7 @@ $(function(){
 			this.close();
 			this.tagEvent();
 			this.submit();
+			this.admin_submit();
 		},
 		open: function() {
 			$(".button.add").on("click", function(){
@@ -58,6 +59,11 @@ $(function(){
 		submit: function() {
 			$("#addMenu #submit").on("click", function(){
 				menuData.add();
+			});
+		},
+		admin_submit: function() {
+			$("#adminAdd #submit").on("click", function(){
+				menuData.adminAdd();
 			});
 		}
 	}

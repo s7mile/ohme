@@ -52,7 +52,7 @@ geoLocation();
 <?php
 	foreach($menuList as $menu){
 		$sel = '';
-		if(isset($chooseMenu))
+		if(is_array($chooseMenu))
 			if(in_array($menu['idx'], $chooseMenu)) $sel = ' class="sel"';
 ?>
 		<li<?php echo $sel; ?>>
@@ -78,6 +78,8 @@ geoLocation();
 			<a href="javascript:;" class="other"></a>
 		</li>
 <?php } ?>
+<!-- 내주변맛집 -->
+<!-- 내주변맛집 -->
 </ul>
 <?php
 	include "app/views/menu_form.php";

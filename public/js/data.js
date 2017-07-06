@@ -16,6 +16,26 @@ var menuData = {
 			}
 		});
 	},
+	adminAdd: function(){
+		var form_data = {
+			name: $("#name").val(),
+			tag: $("#sendTag").val(),
+			team: $("#team").val(),
+			x: $("#x").val(),
+			y: $("#y").val(),
+			address: $("#address").val()
+		};
+
+		$.ajax({
+			type: "POST",
+			url: "/menu/add",
+			data: form_data,
+			success: function(data) {
+				if(data) alert(data);
+				else location.reload();
+			}
+		});
+	},
 	select: function(menu){
 		var form_data = {
 			menu: menu,
@@ -101,6 +121,9 @@ var chooseData = {
 			data: form_data,
 			success: function(data) {
 				if(data) alert(data);
+			},
+			error: function(e){
+				console.log(e);
 			}
 		});
 	},

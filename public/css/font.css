@@ -15,8 +15,8 @@
     font-family: 'nanumbarunpenr';
     src: url('../font/nanumbarunpenr.eot');
     src: url('../font/nanumbarunpenr.eot?#iefix') format('embedded-opentype'),
-         url('../font/nanumbarunpenr.woff2') format('woff2'),
-         url('../font/nanumbarunpenr.woff') format('woff'),
+         /*url('../font/nanumbarunpenr.woff2') format('woff2'),*/
+         /*url('../font/nanumbarunpenr.woff') format('woff'),*/
          url('../font/nanumbarunpenr.ttf') format('truetype'),
          url('../font/nanumbarunpenr.svg#nanumbarunpenr') format('svg');
     font-weight: normal;

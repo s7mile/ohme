@@ -22,6 +22,13 @@ class menu_model {
 		return $query->fetch()->idx;
 	}
 
+	public function getNearMenu($x, $y){
+		$sql = "SELECT idx, menu_name, menu_tag, menu_img ( 6371 * acos( cos( radians(:y) ) * cos( radians( menu_x ) ) * cos( radians( menu_y ) - radians(:x) ) + sin( radians(:y) ) * sin( radians( menu_x ) ) ) ) AS distance FROM menu WHERE team_idx='0' HAVING distance < 5 ORDER BY distance";
+		$query = $this->db->prepare($sql);
+		$query->execute(array(':x' => $x, ':y' => $y));
+		return $query->fetchAll(PDO::FETCH_ASSOC);
+	}
+
 	public function getTodayMenu($teamIdx){
 		$sql = "SELECT m.menu_name, m.menu_img FROM menu m LEFT JOIN visit v ON m.idx=v.menu_idx where v.team_idx=:team_idx and date(v.date) = date(now()) order by v.idx desc";
 		$query = $this->db->prepare($sql);
@@ -107,13 +114,13 @@ class menu_model {
 	// 	return $query->fetchAll(PDO::FETCH_ASSOC);
 	// }
 
-	public function addMenu($name, $tag, $team){
-		$name = preg_replace("/\s+/", "", strip_tags($name));
-		$tag = preg_replace("/\s+/", "", strip_tags($tag));
+	public function addMenu($data){
+		$data['menu'] = preg_replace("/\s+/", "", strip_tags($data['name']));
+		$data['tag'] = preg_replace("/\s+/", "", strip_tags($data['tag']));
 
-		$sql = "INSERT INTO menu (menu_name, menu_tag, team_idx) VALUES (:menu_name, :menu_tag, :team_idx)";
+		$sql = "INSERT INTO menu (menu_name, menu_tag, team_idx, menu_x, menu_y, menu_address) VALUES (:menu_name, :menu_tag, :team_idx, :menu_x, :menu_y, :menu_address)";
 		$query = $this->db->prepare($sql);
-		$query->execute(array(':menu_name' => $name, ':menu_tag' => $tag, ':team_idx' => $team));
+		$query->execute(array(':menu_name' => $data['name'], ':menu_tag' => $data['tag'], ':team_idx' => $data['team'], ':menu_x' => $data['x'], ':menu_y' => $data['y'], ':menu_address' => $data['address']));
 	}
 
 	public function chooseMenu($menus, $team){
