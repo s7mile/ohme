@@ -1,5 +1,5 @@
 @charset "utf-8";
-@import url("font.css");
+@import url(font.css);
 
 /* [S] reset */
 body {
@@ -25,7 +25,6 @@ a, html, button, input, textarea {
 	color: #333;
 }
 iframe {border: 0;}
-{font-style: normal;}
 button, label, input[type="submit"], input[type="image"], input[type="button"] {
 	border: 0;
 	cursor: pointer
@@ -45,7 +44,7 @@ input[type="text"], input[type="password"] {
 body#main {background: url("../img/bg_main.jpg") repeat-x 0 -70px #fcfcfc;}
 /*[S] header*/
 header#header1 {
-	z-index: 999;
+	z-index: 2;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -66,7 +65,7 @@ header#header1 h1 {
 	text-align: center;
 }*/
 header#header1 h1 img {height: 45px;}
-header a {color: #fff;}
+header h1 a {color: #fff;}
 header#header1 nav {
 	height: 100%;
 }
@@ -298,16 +297,17 @@ section.userSection {
 /*[E] botton*/
 
 /*[S] menulist*/
-.topArea {
+.buttonArea {
 	clear: both;
 	overflow: hidden;
 	margin-bottom: 5px;
 }
-.topArea #nowPos {float: left;}
-.topArea .add {float: right;}
-.menuList {
+.buttonArea .allSel {float: left;}
+.buttonArea .add {float: right;}
+.menuList:after {
+	content: '';
+	display: block;
 	clear: both;
-	overflow: hidden;
 }
 .menuList > li {
 	float: left;
@@ -320,6 +320,9 @@ section.userSection {
 	background: #fff;
 	border: 1px solid #ddd;
 }
+#main .menuList > li {
+	height: 123px;
+}
 .menuList > li.empty {
 	border: 0;
 	width: 100%;
@@ -328,6 +331,34 @@ section.userSection {
 	text-align: center;
 	font-size: 20px;
 }
+.menuList .member {
+	border-top: 1px dashed #ddd;
+	padding-top: 5px;
+}
+.menuList .member li {position: relative;}
+.menuList .member span {
+	overflow: hidden;
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	background: #eee;
+}
+.menuList .member span img {width: 100%;}
+.menuList .member p {
+	display: none;
+	z-index: 1;
+	position: absolute;
+	top: 15px;
+	left: 0;
+	padding: 2px 5px;
+	border-radius: 5px;
+	background: #444;
+	color: #fff;
+	text-align: center;
+	font-size: 12px;
+}
+.menuList .member li {display: inline}
 .menuList#menuChoose > li {
 	float: left;
 	position: relative;
@@ -538,14 +569,14 @@ section.userSection {
 	background: none;
 	font-size: 70px;
 }
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 #roulArea .close:hover {
 	-webkit-animation:spin 1s linear infinite;
 	-moz-animation:spin 1s linear infinite;
 	animation:spin 1s linear infinite;
 }
-@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 #spin.btn {
 	position: absolute;
 	top: 250px;
@@ -667,12 +698,11 @@ section.userSection {
 }
 #tagList span {
 	display: inline-block;
-	background: #eee;
+	background: #ffc71e;
 	border-radius: 5px;
 	margin-right: 3px;
 	margin-bottom: 3px;
 	padding: 5px;
-	color: #666;
 }
 
 /*[S] team*/

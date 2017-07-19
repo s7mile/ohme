@@ -124,22 +124,22 @@ class admin_model {
 		$query->execute(array(':user_idx' => $_SESSION['loginIdx']));
 		if($query->fetchColumn() > 0){
 			//이미 오늘의 메뉴가 등록되어있는 경우
-			$sql = "UPDATE choose SET menus = CONCAT(menus, :menus), final_date = :final_date where user_idx = :user_idx and date(final_date) = date(now()) and team_idx = :team_idx";
+			$sql = "UPDATE choose SET menus = CONCAT(menus, :menus), final_date = now() where user_idx = :user_idx and date(final_date) = date(now()) and team_idx = :team_idx";
 			$query = $this->db->prepare($sql);
-			$query->execute(array(':menus' => $menus, ':final_date' => date("Y-m-d H:i:s", time()),  ':user_idx' => $_SESSION['loginIdx'], ':team_idx' => $team));
+			$query->execute(array(':menus' => $menus, ':user_idx' => $_SESSION['loginIdx'], ':team_idx' => $team));
 		}else{
 			//오늘 처음 메뉴 등록
-			$sql = "INSERT INTO choose (user_idx, menus, final_date, team_idx) VALUES (:user_idx, :menus, :final_date, :team_idx)";
+			$sql = "INSERT INTO choose (user_idx, menus, final_date, team_idx) VALUES (:user_idx, :menus, now(), :team_idx)";
 			$query = $this->db->prepare($sql);
-			$query->execute(array(':user_idx' => $_SESSION['loginIdx'], ':menus' => $menus, ':final_date' => date("Y-m-d H:i:s", time()),  ':team_idx' => $team));
+			$query->execute(array(':user_idx' => $_SESSION['loginIdx'], ':menus' => $menus, ':team_idx' => $team));
 		}
 	}
 
 	public function cancelMenu($menus, $team){
 		$menus = $menus.',';
-		$sql = "UPDATE choose SET menus = REPLACE(menus, :menus, ''), final_date = :final_date where user_idx = :user_idx and date(final_date) = date(now()) and team_idx = :team_idx";
+		$sql = "UPDATE choose SET menus = REPLACE(menus, :menus, ''), final_date = now() where user_idx = :user_idx and date(final_date) = date(now()) and team_idx = :team_idx";
 		$query = $this->db->prepare($sql);
-		$query->execute(array(':menus' => $menus, ':final_date' => date("Y-m-d H:i:s", time()),  ':user_idx' => $_SESSION['loginIdx'], ':team_idx' => $team));
+		$query->execute(array(':menus' => $menus, ':user_idx' => $_SESSION['loginIdx'], ':team_idx' => $team));
 	}
 
 	public function selectMenu($menu, $team_idx){

@@ -36,6 +36,23 @@ var menuData = {
 			}
 		});
 	},
+	update: function(){
+		var form_data = {
+			name: $("#name").val(),
+			tag: $("#sendTag").val(),
+			idx: $("#menuIdx").val()
+		};
+
+		$.ajax({
+			type: "POST",
+			url: "/menu/update",
+			data: form_data,
+			success: function(data) {
+				if(data) alert(data);
+				else location.reload();
+			}
+		});
+	},
 	select: function(menu){
 		var form_data = {
 			menu: menu,
@@ -83,11 +100,21 @@ var inviteData = {
 
 		$.ajax({
 			type: "POST",
+			dataType: "json",
 			url: "/team/invite",
 			data: form_data,
 			success: function(data) {
-				if(data) alert(data);
-				else location.reload();
+				console.log(data);
+				if(data.result == false){
+					alert(data.result_msg);
+					$("#" + data.target).focus();
+				}else{
+					alert(data.result_msg);
+					location.reload();
+				}
+			},
+			error: function(err){
+				console.log(err);
 			}
 		});
 	},
@@ -121,9 +148,6 @@ var chooseData = {
 			data: form_data,
 			success: function(data) {
 				if(data) alert(data);
-			},
-			error: function(e){
-				console.log(e);
 			}
 		});
 	},
@@ -154,12 +178,30 @@ var userData = {
 
 		$.ajax({
 			type: "POST",
+			dataType: "json",
 			url: "/user/uiu",
 			data: form_data,
 			success: function(data) {
 				if(data) alert(data);
-				else location.reload();
+				else{
+					alert("변경되었어요!");
+					location.reload();
+				}
 			}
 		});
+	},
+	login: function(){
+		var userId = $("#userId"),
+			userPw = $("#userPw");
+
+		if(userId.val() == ""){
+			alert("아이디를 작성해주세요!");
+			userId.focus();
+		}else if(userPw.val() == ""){
+			alert("비밀번호를 작성해주세요!");
+			userPw.focus();
+		}else{
+			$("#loginForm")[0].submit();
+		}
 	}
 }

@@ -8,16 +8,17 @@
 	</div>
 </div>
 <?php
-$menu = '';
+$menu = "";
 if($roulMenu != false){
-	foreach($roulMenu as $roul){
+	foreach($roulMenu[0] as $roul){
 		if($menu == '')
-			$menu .= '"'.$roul['menu_name'].'"';
+			$menu .= '{"name" : "'.$roul['menu_name'].'", "idx" : "'.$roul['idx'].'"}';
+		
 		else
-			$menu .= ',"'.$roul['menu_name'].'"';
+			$menu .= ', {"name" : "'.$roul['menu_name'].'", "idx" : "'.$roul['idx'].'"}';
 	}
 
-	echo '<script>';
+	echo '<script type="text/javascript">';
 	echo 'var menus = [';
 	echo $menu;
 	echo '];';

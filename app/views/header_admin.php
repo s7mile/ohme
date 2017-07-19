@@ -3,6 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>오늘의 메뉴</title>
+	<!-- 모바일 -->
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!-- 모바일 -->
 	<link rel="stylesheet" href="/public/css/common.css">
 	<script type="text/javascript" src="/public/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/public/js/common.js"></script>

@@ -41,7 +41,7 @@
 		</li>
 		<?php
 		}else{
-			foreach($roulMenu as $menu){
+			foreach($roulMenu[0] as $menu){
 		?>
 		<li>
 			<span>

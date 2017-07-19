@@ -51,7 +51,7 @@ function drawRouletteWheel() {
 			ctx.fillStyle = "black";
 			ctx.translate(325 + Math.cos(angle + arc / 2) * textRadius, 325 + Math.sin(angle + arc / 2) * textRadius);
 			ctx.rotate(angle + arc / 2 + Math.PI / 2);
-			var text = menus[i];
+			var text = menus[i].name;
 			ctx.fillText(text, -ctx.measureText(text).width / 2, -100);
 			ctx.restore();
 		} 
@@ -74,12 +74,12 @@ function drawRouletteWheel() {
 function spin() {
 	spinAngleStart = Math.random() * 10 + 10;
 	spinTime = 0;
-	spinTimeTotal = Math.random() * 3 + 4 * 1000;
+	spinTimeTotal = Math.random() * 3 + 4 * 1500;
 	rotateWheel();
 }
 
 function rotateWheel() {
-	spinTime += 30;
+	spinTime += 10;
 	if(spinTime >= spinTimeTotal) {
 		stopRotateWheel();
 		return;
@@ -87,7 +87,7 @@ function rotateWheel() {
 	var spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
 	startAngle += (spinAngle * Math.PI / 180);
 	drawRouletteWheel();
-	spinTimeout = setTimeout('rotateWheel()', 30);
+	spinTimeout = setTimeout('rotateWheel()', 10);
 }
 
 function stopRotateWheel() {
@@ -98,10 +98,11 @@ function stopRotateWheel() {
 		var index = Math.floor((360 - degrees % 360) / arcd);
 		ctx.save();
 		// ctx.font = 'bold 30px sans-serif';
-		var text = menus[index];
+		var idx = menus[index].idx;
 		// ctx.fillText(text,  - ctx.measureText(text).width / 2 + 150, 150 + 10);
 		// ctx.restore();
-		menuData.select(text);
+		console.log(idx);
+		menuData.select(idx);
 	}
 
 	a+=1;
