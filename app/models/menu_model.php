@@ -101,7 +101,7 @@ class menu_model {
 
 	public function addMenu($data){
 		$data['menu'] = preg_replace("/\s+/", "", strip_tags($data['name']));
-		$data['tag'] = preg_replace("/\s+/", "", strip_tags($data['tag']));
+		$data['tag'] = preg_replace("/\s+/", "", $data['tag']);
 		$sql = "INSERT INTO menu (menu_name, menu_tag, team_idx, menu_x, menu_y, menu_address) VALUES (:menu_name, :menu_tag, :team_idx, :menu_x, :menu_y, :menu_address)";
 		$query = $this->db->prepare($sql);
 		$query->execute(array(':menu_name' => $data['name'], ':menu_tag' => $data['tag'], ':team_idx' => $data['team'], ':menu_x' => $data['x'], ':menu_y' => $data['y'], ':menu_address' => $data['address']));

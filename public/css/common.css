@@ -6,7 +6,7 @@ body {
 	overflow-x:hidden;
 	background: #f0f0f0;
 	/*background: linear-gradient(45deg, #4D93DD, #936DBC);*/
-	font-family: 'nanumbarunpenr', dotum;
+	font-family: 'Roboto', 'nanumbarunpenr', dotum;
 }
 * {
 	margin: 0px;
@@ -218,6 +218,43 @@ section {
 section.userSection {
 	margin-top: 10px;
 }
+section#main {
+	width: auto;
+	margin-top: 0;
+}
+article.mainVis {
+	width: 100%;
+	height: 500px;
+	background: #e14d39;
+	color: #fff;
+	font-weight: bold;
+	font-size: 70px;
+	font-weight: lighter;
+	text-align: center;
+	line-height: 500px;
+}
+article.mainVis .menu {
+	opacity: 1;
+	font-size: 100px;
+}
+article.mainVis span {
+	opacity: .7;
+}
+article.white {
+	background: #fff;
+}
+article.color {
+	background: #f9f8f7;
+}
+.introCont {
+	height: 600px;
+}
+.introCont .contImg {
+	width: 50%;
+}
+.introCont .contTxt {
+	width: 50%;
+}
 /*[S] tab*/
 .tab  {
 	text-align: center;
@@ -387,8 +424,8 @@ section.userSection {
 	border: 1px solid #f42c2c
 }
 .menuList li li {min-height: 20px;}
-.menuList > li:nth-child(4n+1) {margin-left: 0 !important;}
-.menuList > li:nth-child(4n) {margin-right: 0 !important;}
+.menuList#menuChoose > li:nth-child(4n+1) {margin-left: 0 ;}
+.menuList#menuChoose > li:nth-child(4n) {margin-right: 0 ;}
 .menuList > li > span, 
 .menuList a.menu > span {
 	overflow: hidden;
@@ -925,3 +962,71 @@ footer p {
 	color: #e14d39;
 }
 /*[E] footer*/
+
+
+@media all and (max-width: 1000px){
+	section {width: auto;}
+	.menuList#menuChoose > li {
+		margin: 5px auto;
+		float: none;
+	}
+	.menuList#menuChoose > li:nth-child(4n+1) {margin: 5px auto;}
+	.menuList#menuChoose > li:nth-child(4n) {margin: 5px auto;}
+	#teamList li {float: none;}
+	#teamList li:nth-child(2n) {margin-left: 0;}
+}
+
+@media all and (max-width: 600px){
+	article.mainVis {
+		padding-top: 70px;
+		height: 260px;
+		line-height: normal
+	}
+	article.mainVis .menu {display: block;}
+	header#header1 nav {
+		position: absolute;
+		top: 60px;
+		left: 0;
+		height: 50px;
+		background: #fff;
+	}
+	header#header1 nav a {
+		height: 50px;
+		line-height: 50px;
+		color: #e05f4d;
+		font-weight: bold;
+	}
+	section {margin-top: 120px;}
+	header#header2 > div {
+		padding: 0 10px;
+		width: calc(100% - 20px);
+	}
+	header#header2 .userInfo {right: 10px;}
+	#selectMenu a.chooseMenu {
+		width: 90%;
+	}
+	#selectMenu {padding-top: 20px;}
+	.menuList#menuChoose > li {width: calc(100% - 10px);}
+	.menuList > li.empty {margin: 0;}
+	.buttonArea {margin: 0 5px 5px;}
+	#teamList li {
+		width: calc(100% - 15px);
+		margin: 0 auto 10px !important;
+	}
+	h1 {height: 53px;}
+	h1 img {height: 53px;}
+	header#header2 {height: 133px;}
+	.formArea li, #mypageArea li {height: auto;}
+	.formArea input, #mypageArea input {
+		width: calc(100% - 20px);
+	}
+	.formArea input[type="button"], #mypageArea input[type="button"] {
+		width: 100%;
+	}
+}
+
+
+
+
+
+

@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@font-face {
+    font-family: 'Nanum Gothic';
+    font-style: normal;
+    font-weight: normal;
+    src: url(/asset/font/NanumGothic-Regular.eot);
+    src: url(/asset/font/NanumGothic-Regular.eot?#iefix) format('embedded-opentype'),
+        url(/asset/font/NanumGothic-Regular.woff2) format('woff2'),
+        url(/asset/font/NanumGothic-Regular.woff) format('woff'),
+        url(/asset/font/NanumGothic-Regular.ttf) format('truetype');
+}
 @font-face {
     font-family: 'nanumbarunpenb';
     src: url('../font/nanumbarunpenb.eot');
